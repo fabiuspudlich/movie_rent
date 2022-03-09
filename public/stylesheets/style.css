@@ -1,0 +1,333 @@
+html{width: 100%;
+  height: 100%;}
+
+body{width: 100%;
+  height: 100%;
+  margin-top: 0px;
+  background:linear-gradient(rgba(17, 16, 16, 0.5), rgba(0, 0, 0, 0.5)), url(https://i.imgur.com/jrEFD1z.jpeg);
+  padding-top: 0px;
+  padding-bottom: 0px;
+  margin-left: 0;
+  background-position: center center;
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: rgb(56, 54, 54);}
+
+article{
+  height: 95%;
+  display: flex;
+  align-items: center;
+  position: relative;}    
+
+footer{
+  background-color: rgb(0, 0, 0);
+  width: 100%;
+  height: 5%;
+  position: fixed;
+  margin-bottom: 0px;
+  display: flex;
+  color: white;
+  display: table;}
+
+footer div{
+ display: table-cell;
+ vertical-align: middle;
+ width: 100%;
+ height: 100%;
+ font-family: Verdana, Geneva, Tahoma, sans-serif;
+ font-size: 70%;
+ text-align: center;}
+
+#header_background{
+  position: absolute;
+  z-index: -1;
+  filter: brightness(50%);
+  margin-left:auto;
+  margin-right: auto;
+  height: auto;
+  width: 100%;}
+
+nav{width:100%;
+  position: fixed;
+  top: 0%;
+  height: 100px;
+  background-color: rgb(133, 15, 15);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  z-index: 2;}
+
+h1{font-size: 200%;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  text-align: center;
+  display: flex;
+  width: 50%;} 
+
+h1 a{
+  text-decoration: none;
+  color: white;
+  height: 100%;
+  text-align: center;}
+
+#logoWrapper{
+  height: 100%;
+  width: 33%;
+  display: flex;
+  float: left;
+  margin-left: 50px;
+  margin-top: 20px;
+  padding-bottom: 10px;}
+
+#logo{
+  height: 50%;
+  width: auto;
+  margin-top: 15px;}    
+  
+#logoWrapper:hover{
+  text-decoration: none;
+  color: white;}
+
+#kunde{width: 33%;
+  margin-right: 50px;
+  margin-top: 10px;}
+
+#kunde p{font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: white;
+  font-size: 100%;
+  width: 200px;
+  float: right;
+  text-align: center;} 
+
+p a:hover{
+  font-size: 18px;} 
+
+p a{text-decoration: none;
+  color: white;}   
+ 
+/*
+
+#ausgeliehen{
+  background-color: white;
+  width: 500px;
+  min-height: 400px;
+  position: absolute;
+  margin: auto;
+  border-radius: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  left: 50%;
+  margin-left: -250px;
+  top: 50%;
+  margin-top: -200px;
+  background: url(https://static.independent.co.uk/s3fs-public/thumbnails/image/2015/12/17/14/cinema-getty.jpg?width=982&height=726&auto=webp&quality=75);
+  background-position: center center;
+  background-attachment: local;
+  background-size: cover;
+  background-repeat: space;
+  background-color: rgb(56, 54, 54);}
+
+#ausgeliehen p{
+  width: 500px;
+  margin-top: 180px;
+  text-align: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 35px;
+  font-weight: bolder;
+  color: white;}  */
+
+/* --------------------------------------------------------------SUCHE--------------------------------------------------------------------------------*/     
+
+#searchbar{background-color: white;
+  width: 300px;
+  height: 30px;
+  margin: auto;
+  border-radius: 25px;}
+
+#container{
+  background-color: rgb(255, 255, 255);
+  border: none;
+  width: 33%;
+  height: 60%;
+  margin: auto;
+  border-radius: 7px;
+  font-size: 26px;}
+
+#suggestions{
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background-color: rgb(255, 255, 255);
+  border-radius: 7px;
+  width: 100%;
+  min-height: 0px;
+  margin-top: 0%;
+  display: flex;
+  flex-direction: column;}
+
+
+#suggestions p{
+  padding-left: 27px;
+  padding-top: 4px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  height: 30px;
+  color: grey;
+  font-size: 20px;
+  border-radius: 7px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  background-color: rgb(255, 255, 255);}
+
+#suggestions p:hover{
+  background-color: lightgrey;
+  cursor: pointer;}
+
+#navSearch{background: transparent;
+  border: none;
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  border-radius: 0px;
+  padding-left: 30px;
+  font-size: 24px;} 
+
+#navSearch:focus{
+  outline: none;}
+
+/* --------------------------------------------------------Shopping Kart-------------------------------------------------------------------------------------*/
+
+#shoppingKartWrapper{
+  position: fixed;
+  height: 500px;
+  width: 100%;
+  padding-right: 0px;}
+
+#shoppingKart{
+  background-color: white;
+  border-radius: 20px 1px 1px 20px;
+  width: 200px;
+  height: 500px;
+  float: right;
+  margin-right: -200px;
+  box-shadow: 0px 5px 8px 3px rgb(0, 0, 0);}
+
+#buttonKart{
+  width: 50px;
+  height: 50px;
+  border-radius: 20px 1px 1px 20px;
+  background-color: rgb(133, 15, 15);
+  margin-top: 220px;
+  margin-left: -55px;
+  color: white;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 40px;
+  font-weight: bolder;
+  border: 5px solid white;}
+
+#buttonKart:hover{
+  cursor: pointer;}
+
+#buttonKart img{
+  margin-top: 10px;
+  width: 30px;
+  height: 30px;
+  margin-left: 12px;}
+
+#kartSearchWrapper{
+  position: fixed;
+  width: 100px;
+  margin-top: -250px;
+  padding-left: 20px;}
+
+#customerInput{
+  width: 140px;
+  border-radius: 5px;
+  padding-left: 8px;}
+
+#customerSuggestions{
+  width: 176px;}
+
+#customerSuggestions p{
+  color: grey;
+  height: 20px;
+  width: 140px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 12px;
+  padding-left: 8px;
+  cursor: pointer;
+  background-color: white;
+  padding-top: 4px;
+  margin-top: 0px;
+  margin-bottom: 0px;}
+
+#setCustomer{
+  font-size: 12px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: grey;
+  width: 180px;
+  height: 20px;
+  margin-top: -200px;
+  margin-left: 30px;
+  background-color: white;}
+
+#setMovies{
+  width: 176px;
+  margin-left: auto;
+  margin-right: auto;
+  max-height: 350px;
+  overflow: auto;
+  overflow-x: hidden;}
+
+#setMovies p{
+  width: 80%;
+  height: 20px;
+  font-size: 12px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: grey;
+  padding-left: 20px;}
+
+  /*---------------------------------LISTE----------------------------------------------*/
+
+#input{
+  background-color: white;
+  width: 500px;
+  min-height: 400px;
+  max-height: 600px;
+  
+  position: relative;
+  margin: auto;      
+  border-radius: 25px;
+  
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  box-shadow: 0px 5px 8px 3px rgb(0, 0, 0);
+  z-index: 1;}
+
+#inputMovies{
+  width: 90%;
+  max-height: 350px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  border-radius: 5px;}
+
+#inputMovies div{
+  width: 100%;
+  height: 50px;
+  background-color: rgb(255, 255, 255);} 
+
+#input div p{
+  color: grey;
+  font-size: 14px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  padding-left: 20px;
+  float: left;}
+
+#input div button{
+  float: right;
+  margin-right: 40px;
+  margin-top: 15px;}
+
+#input div button:hover{
+  cursor: pointer;}

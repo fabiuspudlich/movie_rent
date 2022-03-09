@@ -1,0 +1,66 @@
+<html>
+
+<head>
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/3409/3409602.png">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MovieRent</title>
+  <meta name="description" content="MovieRent">
+  <meta name="author" content="SitePoint">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="/javascripts/script.js"></script>
+</head>
+
+<body>
+  <nav>
+    <div id="logoWrapper">
+      <img id="logo" src="https://cdn-icons-png.flaticon.com/512/3409/3409602.png">
+      <h1> <a href="MovieRent.html">MovieRent</a></h1>    
+  </div>
+  <div id="container">  
+    <input type="text" id="navSearch" placeholder="Film suchen">
+
+    <div id="suggestions">
+    </div>
+  </div>
+    <div id="kunde">
+      <p><a href="MovieRent_customer.html">Kunde hinzufügen</a></p>
+  </div>
+  <div id="dimNav" style="display:none" onclick="undim()"></div>
+  </nav>
+
+  <div id="dim" style="display:none" onclick="undim()"></div>
+  
+  <article>    
+    <div id="input" style="display:none">
+      <div id="inputMovies"></div>
+    </div>
+
+   <!-- <div id="ausgeliehen" style="display: none;">
+      <p>Film ausgeliehen!</p>
+    </div>  -->
+    <div id="shoppingKartWrapper">
+      <div id="shoppingKart">
+        <form type="button" id="buttonKart" onclick="kartView();"><img src="https://icon-library.com/images/shopping-basket-icon/shopping-basket-icon-18.jpg"></form>
+        <div id="kartSearchWrapper">  
+          <input type="text" id="customerInput" placeholder="Kunde">
+          <div id="customerSuggestions">
+          </div>
+        </div>
+        <p id="setCustomer"></p>
+        <div id="setMovies">
+        </div>
+      </div>
+    </div>
+
+  </article>
+  <footer>
+    <div>
+    © SWEP Gruppe 6
+    </div>
+  </footer>
+</body>
+
+</html>
