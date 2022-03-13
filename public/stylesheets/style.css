@@ -1,6 +1,12 @@
 html{width: 100%;
   height: 100%;}
 
+::-moz-selection {background: rgb(99, 99, 99);
+  color: white;}
+
+::selection {background: rgb(99, 99, 99);
+  color: white;}
+
 body{width: 100%;
   height: 100%;
   margin-top: 0px;
@@ -56,7 +62,7 @@ nav{width:100%;
   display: flex;
   flex-direction: row;
   align-items: center;
-  z-index: 2;}
+  z-index: 3;}
 
 h1{font-size: 200%;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -103,7 +109,26 @@ p a:hover{
   font-size: 18px;} 
 
 p a{text-decoration: none;
-  color: white;}   
+  color: white;
+  transition: font-size 0.5s;}   
+
+#dim{
+  background-color: black;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 2;
+  opacity: 0.7;
+}    
+
+#dimNav{
+  background-color: black;
+  width: 100%;
+  height: 100px;
+  position: fixed;
+  opacity: 0.7;
+  z-index: 1;
+}
  
 /*
 
@@ -153,7 +178,8 @@ p a{text-decoration: none;
   height: 60%;
   margin: auto;
   border-radius: 7px;
-  font-size: 26px;}
+  font-size: 26px;
+  z-index: 2;}
 
 #suggestions{
   font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -164,7 +190,6 @@ p a{text-decoration: none;
   margin-top: 0%;
   display: flex;
   flex-direction: column;}
-
 
 #suggestions p{
   padding-left: 27px;
@@ -204,26 +229,28 @@ p a{text-decoration: none;
   padding-right: 0px;}
 
 #shoppingKart{
-  background-color: white;
+  
+  backdrop-filter: blur(20px);
   border-radius: 20px 1px 1px 20px;
   width: 200px;
   height: 500px;
   float: right;
   margin-right: -200px;
-  box-shadow: 0px 5px 8px 3px rgb(0, 0, 0);}
+  box-shadow: 0px 5px 8px 3px rgb(0, 0, 0);
+  transition: margin-right 1s;}
+
 
 #buttonKart{
   width: 50px;
   height: 50px;
   border-radius: 20px 1px 1px 20px;
-  background-color: rgb(133, 15, 15);
+  background-color: rgb(255, 255, 255);
   margin-top: 220px;
-  margin-left: -55px;
+  margin-left: -50px;
   color: white;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: 40px;
-  font-weight: bolder;
-  border: 5px solid white;}
+  font-weight: bolder;}
 
 #buttonKart:hover{
   cursor: pointer;}
@@ -264,12 +291,11 @@ p a{text-decoration: none;
 #setCustomer{
   font-size: 12px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  color: grey;
+  color: rgb(255, 255, 255);
   width: 180px;
   height: 20px;
   margin-top: -200px;
-  margin-left: 30px;
-  background-color: white;}
+  margin-left: 30px;}
 
 #setMovies{
   width: 176px;
@@ -284,17 +310,19 @@ p a{text-decoration: none;
   height: 20px;
   font-size: 12px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  color: grey;
+  color: rgb(255, 255, 255);
   padding-left: 20px;}
 
   /*---------------------------------LISTE----------------------------------------------*/
 
 #input{
-  background-color: white;
-  width: 500px;
-  min-height: 400px;
-  max-height: 600px;
   
+  backdrop-filter: blur(10px);
+  width: 500px;
+  min-height: 100px;
+  max-height: 600px;
+  padding-top: 20px;
+  padding-bottom: 20px;
   position: relative;
   margin: auto;      
   border-radius: 25px;

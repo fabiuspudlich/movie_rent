@@ -6,6 +6,112 @@ async function getdata() {
   .then(function (response) {
     // handle success
     movieData = response
+
+    const searchInput = document.getElementById("navSearch")
+    const suggestionsPanel = document.getElementById("suggestions")
+    const mydata = movieData.data
+    const customerInput = document.getElementById("customerInput")
+    const customerSuggestions = document.getElementById("customerSuggestions")
+    var divID = 0
+    
+    searchInput.addEventListener('keyup', function(){
+        console.log(searchInput.value)
+        const input = searchInput.value.toLowerCase()
+        suggestionsPanel.innerHTML = ''
+        const suggestions = mydata.filter(function(suchInput) {
+          if(suchInput.title.toLowerCase().startsWith(input)){       
+            return suchInput.title.toLowerCase().startsWith(input)}
+      
+      });
+    
+      suggestions.forEach(function(suggested){
+            divID++
+            movieID++
+            t = suggested.title+' '+suggested.price
+            const p = document.createElement('p')
+            p.innerHTML = suggested.title
+    
+            p.addEventListener('click', function(){
+              showWindow()
+              undim()
+              console.log('KLICK')
+              suggestionsPanel.textContent=''
+              let i = document.getElementById("inputMovies")
+              let wrapper = document.createElement("div")
+              wrapper.setAttribute("id", 'div'+divID)
+              let div = document.getElementById("div"+divID)
+                let m = document.createElement("p")
+                m.innerHTML = suggested.title+' '+suggested.available+' '+suggested.price
+                var b = document.createElement("button")           
+                b.innerHTML = '+'
+    
+                b.addEventListener('click', function(){
+                  console.log('addKart')
+                  let t = suggested.title
+                  console.log(t)
+                  let k = document.getElementById("setMovies")
+                  let b = document.createElement("button")
+                  b.innerHTML = '-'
+                  let movie = document.createElement('p')
+                  movie.setAttribute("id", 'movie'+movieID)
+                  movie.innerHTML = t
+                  k.appendChild(movie)
+                  k.appendChild(b)
+                  b.addEventListener('click', function(){
+                      let r = document.getElementById('movie'+movieID)
+                      r.remove()
+                  })
+                })
+    
+              console.log(suggested.title)
+              i.appendChild(wrapper)  
+              wrapper.appendChild(m)
+              wrapper.appendChild(b)
+              
+            })
+    
+            suggestionsPanel.appendChild(p)
+        });
+        if (input === ''){
+            suggestionsPanel.innerHTML = ''
+        }
+    }) 
+    
+    customerInput.addEventListener('keyup', function(){
+        console.log(customerInput.value)
+        const input = customerInput.value.toLowerCase()
+        customerSuggestions.innerHTML = ''
+        const suggestions = mydata.filter(function(suchInput) {
+    
+              if(suchInput.surname.toLowerCase().startsWith(input)){       
+                return suchInput.surname.toLowerCase().startsWith(input)}
+              else if(suchInput.forename.toLowerCase().startsWith(input)){ 
+                return suchInput.forename.toLowerCase().startsWith(input)}
+              else if(suchInput.cNumber.toLowerCase().startsWith(input)){ 
+                return suchInput.cNumber.toLowerCase().startsWith(input)}
+            
+        });
+    
+      suggestions.forEach(function(suggested){
+            const p = document.createElement('p')
+            p.innerHTML = suggested.forename + ' ' + suggested.surname
+    
+            p.addEventListener('click', function(){
+              let c = document.getElementById("setCustomer")
+              let s = document.getElementById("customerSuggestions")
+              s.textContent=''
+              c.innerHTML = 'Kunde: '+suggested.surname+' '+suggested.cNumber
+    
+    
+            })
+    
+            customerSuggestions.appendChild(p)
+        });
+        if (input === ''){
+          customerSuggestions.innerHTML = ''
+        }
+    })
+
     console.dir(response);
   })
   .catch(function (error) {
@@ -25,110 +131,7 @@ $.getJSON( "localhost:8000/movies.json", function( data ) {
   });
 });*/
 
-const searchInput = document.getElementById("navSearch")
-const suggestionsPanel = document.getElementById("suggestions")
-const mydata = movieData
-const customerInput = document.getElementById("customerInput")
-const customerSuggestions = document.getElementById("customerSuggestions")
-var divID = 0
 
-searchInput.addEventListener('keyup', function(){
-    console.log(searchInput.value)
-    const input = searchInput.value.toLowerCase()
-    suggestionsPanel.innerHTML = ''
-    const suggestions = movieData.filter(function(suchInput) {
-      if(suchInput.title.toLowerCase().startsWith(input)){       
-        return suchInput.title.toLowerCase().startsWith(input)}
-  
-  });
-
-  suggestions.forEach(function(suggested){
-        divID++
-        movieID++
-        t = suggested.title+' '+suggested.price
-        const p = document.createElement('p')
-        p.innerHTML = suggested.title
-
-        p.addEventListener('click', function(){
-          showWindow()
-          undim()
-          console.log('KLICK')
-          suggestionsPanel.textContent=''
-          let i = document.getElementById("inputMovies")
-          let wrapper = document.createElement("div")
-          wrapper.setAttribute("id", 'div'+divID)
-          let div = document.getElementById("div"+divID)
-            let m = document.createElement("p")
-            m.innerHTML = suggested.title+' '+suggested.available+' '+suggested.price
-            var b = document.createElement("button")           
-            b.innerHTML = '+'
-
-            b.addEventListener('click', function(){
-              console.log('addKart')
-              let t = suggested.title
-              console.log(t)
-              let k = document.getElementById("setMovies")
-              let b = document.createElement("button")
-              b.innerHTML = '-'
-              let movie = document.createElement('p')
-              movie.setAttribute("id", 'movie'+movieID)
-              movie.innerHTML = t
-              k.appendChild(movie)
-              k.appendChild(b)
-              b.addEventListener('click', function(){
-                  let r = document.getElementById('movie'+movieID)
-                  r.remove()
-              })
-            })
-
-          console.log(suggested.title)
-          i.appendChild(wrapper)  
-          wrapper.appendChild(m)
-          wrapper.appendChild(b)
-          
-        })
-
-        suggestionsPanel.appendChild(p)
-    });
-    if (input === ''){
-        suggestionsPanel.innerHTML = ''
-    }
-}) 
-
-customerInput.addEventListener('keyup', function(){
-    console.log(customerInput.value)
-    const input = customerInput.value.toLowerCase()
-    customerSuggestions.innerHTML = ''
-    const suggestions = mydata.filter(function(suchInput) {
-
-          if(suchInput.surname.toLowerCase().startsWith(input)){       
-            return suchInput.surname.toLowerCase().startsWith(input)}
-          else if(suchInput.forename.toLowerCase().startsWith(input)){ 
-            return suchInput.forename.toLowerCase().startsWith(input)}
-          else if(suchInput.cNumber.toLowerCase().startsWith(input)){ 
-            return suchInput.cNumber.toLowerCase().startsWith(input)}
-        
-    });
-
-  suggestions.forEach(function(suggested){
-        const p = document.createElement('p')
-        p.innerHTML = suggested.forename + ' ' + suggested.surname
-
-        p.addEventListener('click', function(){
-          let c = document.getElementById("setCustomer")
-          let s = document.getElementById("customerSuggestions")
-          s.textContent=''
-          c.innerHTML = 'Kunde: '+suggested.surname+' '+suggested.cNumber
-
-
-        })
-
-        customerSuggestions.appendChild(p)
-    });
-    if (input === ''){
-      customerSuggestions.innerHTML = ''
-    }
-})
 
 
 
