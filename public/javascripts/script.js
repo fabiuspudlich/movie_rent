@@ -122,7 +122,6 @@ async function getdata() {
     // always executed
   });
 }
-getdata()
 
 /*
 $.getJSON( "localhost:8000/movies.json", function( data ) {
