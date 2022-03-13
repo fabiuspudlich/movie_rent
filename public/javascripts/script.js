@@ -9,10 +9,12 @@ async function getdata() {
 
     const searchInput = document.getElementById("navSearch")
     const suggestionsPanel = document.getElementById("suggestions")
-    const mydata = movieData.data
+    const mydata = response.data
+    console.log(response.value+"mydata")
     const customerInput = document.getElementById("customerInput")
     const customerSuggestions = document.getElementById("customerSuggestions")
     var divID = 0
+    let movieID = 0
     
     searchInput.addEventListener('keyup', function(){
         console.log(searchInput.value)
@@ -20,13 +22,12 @@ async function getdata() {
         suggestionsPanel.innerHTML = ''
         const suggestions = mydata.filter(function(suchInput) {
           if(suchInput.title.toLowerCase().startsWith(input)){       
-            return suchInput.title.toLowerCase().startsWith(input)}
-      
+            return suchInput.title.toLowerCase().startsWith(input)}      
       });
     
       suggestions.forEach(function(suggested){
             divID++
-            movieID++
+            movieID++ 
             t = suggested.title+' '+suggested.price
             const p = document.createElement('p')
             p.innerHTML = suggested.title
@@ -100,11 +101,8 @@ async function getdata() {
               let c = document.getElementById("setCustomer")
               let s = document.getElementById("customerSuggestions")
               s.textContent=''
-              c.innerHTML = 'Kunde: '+suggested.surname+' '+suggested.cNumber
-    
-    
-            })
-    
+              c.innerHTML = 'Kunde: '+suggested.surname+' '+suggested.cNumber 
+            })   
             customerSuggestions.appendChild(p)
         });
         if (input === ''){
@@ -129,10 +127,6 @@ $.getJSON( "localhost:8000/movies.json", function( data ) {
     console.log(val)
   });
 });*/
-
-
-
-
 
     function myFunction() {
       var y = document.getElementById("output")
