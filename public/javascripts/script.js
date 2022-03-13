@@ -25,7 +25,7 @@ $.getJSON( "localhost:8000/movies.json", function( data ) {
   });
 });*/
 
-/*const searchInput = document.getElementById("navSearch")
+const searchInput = document.getElementById("navSearch")
 const suggestionsPanel = document.getElementById("suggestions")
 const mydata = movieData
 const customerInput = document.getElementById("customerInput")
@@ -44,12 +44,14 @@ searchInput.addEventListener('keyup', function(){
 
   suggestions.forEach(function(suggested){
         divID++
+        movieID++
         t = suggested.title+' '+suggested.price
         const p = document.createElement('p')
         p.innerHTML = suggested.title
 
         p.addEventListener('click', function(){
           showWindow()
+          undim()
           console.log('KLICK')
           suggestionsPanel.textContent=''
           let i = document.getElementById("inputMovies")
@@ -66,9 +68,17 @@ searchInput.addEventListener('keyup', function(){
               let t = suggested.title
               console.log(t)
               let k = document.getElementById("setMovies")
+              let b = document.createElement("button")
+              b.innerHTML = '-'
               let movie = document.createElement('p')
+              movie.setAttribute("id", 'movie'+movieID)
               movie.innerHTML = t
               k.appendChild(movie)
+              k.appendChild(b)
+              b.addEventListener('click', function(){
+                  let r = document.getElementById('movie'+movieID)
+                  r.remove()
+              })
             })
 
           console.log(suggested.title)
@@ -157,22 +167,43 @@ customerInput.addEventListener('keyup', function(){
 
     window.addEventListener('DOMContentLoaded', (event) => {
     console.log('DOM fully loaded and parsed')
-    getdata();
-  });
+   });
 
 
-  function kartView(){
-    let k = document.getElementById("shoppingKart")
-    if (k.style.marginRight === "0px"){
-      k.style.marginRight = "-200px"
-    } else {
+   function kartView(){
+     console.log("kartView")
+     let k = document.getElementById("shoppingKart")
+     if (k.style.marginRight === "0px"){
+       k.style.marginRight = "-200px"
+     } else {
       k.style.marginRight = "-0px"
-    }
-  }
+     }
+   }
 
-  function showWindow(){
-    let movieWindow = document.getElementById("input")
-    if(movieWindow.style.display === "none"){
+   function showWindow(){
+     let movieWindow = document.getElementById("input")
+     if(movieWindow.style.display === "none"){
       movieWindow.style.display = "flex"
-    }
-  }*/
+     }
+   }
+
+   function dim(){
+     let dim = document.getElementById("dim")
+     let dimNav = document.getElementById("dimNav")
+     let search = document.getElementById("navSearch")
+     search.addEventListener('focus', function(){
+      if (search === document.activeElement){
+      dim.style.display = "block"
+      dimNav.style.display = "block"
+      } 
+     })
+   }
+
+   dim()
+
+   function undim(){
+    let dim = document.getElementById("dim")
+    let dimNav = document.getElementById("dimNav")
+    dim.style.display = "none"
+    dimNav.style.display= "none"
+   }
