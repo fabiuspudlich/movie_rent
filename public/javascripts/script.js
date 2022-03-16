@@ -42,7 +42,7 @@ async function getdata() {
               wrapper.setAttribute("id", 'div'+divID)
               let div = document.getElementById("div"+divID)
                 let m = document.createElement("p")
-                m.innerHTML = suggested.title+' '+suggested.available+' '+suggested.price
+                m.innerHTML = 'Titel: '+suggested.title+' | Verfügbar: '+suggested.available+' | Preis: '+suggested.price
                 var b = document.createElement("button")           
                 b.innerHTML = '+'
     
@@ -52,7 +52,7 @@ async function getdata() {
                   console.log(t)
                   let k = document.getElementById("setMovies")
                   let b = document.createElement("button")
-                  b.innerHTML = '-'
+                  b.innerHTML = '-'             
                   let movie = document.createElement('p')
                   movie.setAttribute("id", 'movie'+movieID)
                   movie.innerHTML = t
@@ -203,4 +203,19 @@ $.getJSON( "localhost:8000/movies.json", function( data ) {
     let dimNav = document.getElementById("dimNav")
     dim.style.display = "none"
     dimNav.style.display= "none"
+   }
+
+   function saveData(){
+    let o = document.getElementById("output").value
+ /*   o.value */
+    console.log("saveData")
+    axios.post('/save_movies', {
+      o: o
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
    }

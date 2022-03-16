@@ -301,7 +301,8 @@ p a{text-decoration: none;
   width: 176px;
   margin-left: auto;
   margin-right: auto;
-  max-height: 350px;
+  height: 310px;
+  max-height: 310px;
   overflow: auto;
   overflow-x: hidden;}
 
@@ -312,6 +313,17 @@ p a{text-decoration: none;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   color: rgb(255, 255, 255);
   padding-left: 20px;}
+
+#checkout{
+  position: fixed;
+  margin-top: 5px;
+  margin-left: 60px;
+}  
+
+#output{
+  position: fixed;
+  margin-left: -10000px;
+}
 
   /*---------------------------------LISTE----------------------------------------------*/
 
