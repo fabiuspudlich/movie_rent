@@ -3,7 +3,7 @@ let movieData = null
 async function getdata() {
     // Make a request for a user with a given ID
     axios.get('/movies')
-  .then(function (response) {
+    .then(function (response) {
     // handle success
     movieData = response
 

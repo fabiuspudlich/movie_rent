@@ -1,0 +1,80 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="style_customer.css">
+  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/3409/3409602.png">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MovieRent</title>
+  <meta name="description" content="MovieRent">
+  <meta name="author" content="SitePoint">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+</head>
+
+<body>
+  <nav>
+    <div id="logoWrapper">
+      <img id="logo" src="https://cdn-icons-png.flaticon.com/512/3409/3409602.png">
+      <h1> <a href="MovieRent.html">MovieRent</a></h1>    
+  </div>
+  <div id="container">  
+    <input type="text" id="navSearch" placeholder="Suche">
+    <div id="suggestions">
+    </div>
+  </div>
+    <div id="rent">
+      <p><a href="MovieRent.html">Filme verleihen</a></p>
+  </div>
+  </nav>
+
+  <article>  
+
+    <div id="input" style="display: flex">
+     <h2>Neuer Kunde</h2>
+     <form action="/MovieRent_V2.html">
+        <label for="forename">Vorname:</label>
+        <input type="text" id="forename" placeholder="Vorname">
+        <label for="surname">Nachname:</label>       
+        <input type="text" id="surname" name="fname" placeholder="Nachname">       
+        <div id="cover">     
+        </div>      
+     </form>
+        <div id="submitWrapper">
+             <input id="submit" type="button" value="Submit" onclick="myFunction()" onclick="createNr()" onclick="constructTable('#table')">
+        </div>
+    </div>
+
+    <div id="output" style="display: none">
+      <table id="table">
+        <tr>
+          <th>Vorname</th>
+          <th>Nachname</th>
+          <th>Kundennr.</th>
+        </tr>
+        <tr>
+          <td>Max</td>
+          <td>Mustermann</td>
+          <td>12345</td>
+        </tr>
+      </table>
+        <div id="buttonWrapper">
+          <input id="finish" type="button" value="Fertig" onclick="myFunction(); filmA();">
+        </div>
+    </div>
+
+    <div id="finished" style="display: none;">
+      <p>Kunde erstellt!</p>
+    </div>  
+
+  </article>
+
+  <footer>
+    <div>
+    © SWEP Gruppe 6
+    </div>
+  </footer>
+   <script type="text/javascript" src="data.json"></script>
+    <script src="script_customer.js"></script>
+</body>
+</html>
