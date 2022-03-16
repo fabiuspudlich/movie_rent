@@ -2,8 +2,8 @@ let movieData = null
 
 async function getdata() {
     // Make a request for a user with a given ID
-    axios.get('/movies')
-  .then(function (response) {
+    axios.get('/get_movies')
+    .then(function (response) {
     // handle success
     movieData = response
 
@@ -120,13 +120,6 @@ async function getdata() {
     // always executed
   });
 }
-
-/*
-$.getJSON( "localhost:8000/movies.json", function( data ) {
-  $.each( data, function( key, val ) {
-    console.log(val)
-  });
-});*/
 
     function myFunction() {
       var y = document.getElementById("output")
