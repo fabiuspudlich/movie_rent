@@ -318,11 +318,27 @@ p a{text-decoration: none;
   position: fixed;
   margin-top: 5px;
   margin-left: 60px;
+  cursor: pointer;
 }  
 
 #output{
   position: fixed;
-  margin-left: -10000px;
+  margin-left: -10000px; 
+}
+
+#setMovies div{
+  width: 160px;
+  height: 20px;
+}
+
+#setMovies div button{
+  float: right;
+}
+
+#setMovies div p{
+  float: left;
+  width: 100px;
+  margin-top: 3px;
 }
 
   /*---------------------------------LISTE----------------------------------------------*/

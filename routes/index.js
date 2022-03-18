@@ -13,11 +13,12 @@ router.get('/get_movies', function(req, res, next) {
 });
 
 /* Save movies.json */
-router.get('/save_movies', function(req, res, next) {
+router.post('/save_movies', function(req, res, next) {
   /*fs.writeFile('movies.json', JSON.stringify(req), function (err) {
     if (err) {return console.log(err)};
   });*/
   console.log(req)
+  console.log(req.body)
   res.json('erfolgreich');
 });
 

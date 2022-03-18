@@ -1,4 +1,5 @@
 let movieData = null
+let customerData = null
 
 async function getdata() {
     // Make a request for a user with a given ID
@@ -15,6 +16,7 @@ async function getdata() {
     const customerSuggestions = document.getElementById("customerSuggestions")
     var divID = 0
     let movieID = 0
+    let movieDivID = 0
     
     searchInput.addEventListener('keyup', function(){
         console.log(searchInput.value)
@@ -27,7 +29,6 @@ async function getdata() {
     
       suggestions.forEach(function(suggested){
             divID++
-            movieID++ 
             t = suggested.title+' '+suggested.price
             const p = document.createElement('p')
             p.innerHTML = suggested.title
@@ -40,7 +41,7 @@ async function getdata() {
               let i = document.getElementById("inputMovies")
               let wrapper = document.createElement("div")
               wrapper.setAttribute("id", 'div'+divID)
-              let div = document.getElementById("div"+divID)
+            /*  let div = document.getElementById("div"+divID) */
                 let m = document.createElement("p")
                 m.innerHTML = 'Titel: '+suggested.title+' | Verfügbar: '+suggested.available+' | Preis: '+suggested.price
                 var b = document.createElement("button")           
@@ -48,20 +49,28 @@ async function getdata() {
     
                 b.addEventListener('click', function(){
                   console.log('addKart')
+                  movieDivID++ 
                   let t = suggested.title
                   console.log(t)
                   let k = document.getElementById("setMovies")
-                  let b = document.createElement("button")
-                  b.innerHTML = '-'             
+                    let selectedMovie = document.createElement("div")
+                    selectedMovie.setAttribute("id", 'movieDiv'+movieDivID)
+                  let button = document.createElement("button")                  
+                  button.innerHTML = '-'
+                  button.setAttribute("id", 'buttonID'+movieDivID)
+                  button.setAttribute("value", movieDivID)
+                  button.setAttribute("onclick", 'removeMovie(this.value)')
                   let movie = document.createElement('p')
-                  movie.setAttribute("id", 'movie'+movieID)
+                  movie.setAttribute("id", 'movie'+movieDivID)
                   movie.innerHTML = t
-                  k.appendChild(movie)
-                  k.appendChild(b)
-                  b.addEventListener('click', function(){
-                      let r = document.getElementById('movie'+movieID)
-                      r.remove()
-                  })
+         /*         button.addEventListener('click', function(){
+                    const removeID = movieDivID
+                    let r = document.getElementById('movieDiv'+removeID)
+                    r.remove()
+                })  */
+                  k.appendChild(selectedMovie)
+                  selectedMovie.appendChild(movie)
+                  selectedMovie.appendChild(button)                                                 
                 })
     
               console.log(suggested.title)
@@ -72,46 +81,66 @@ async function getdata() {
             })
     
             suggestionsPanel.appendChild(p)
-        });
+        })
+        
         if (input === ''){
             suggestionsPanel.innerHTML = ''
         }
     }) 
-    
-    customerInput.addEventListener('keyup', function(){
-        console.log(customerInput.value)
-        const input = customerInput.value.toLowerCase()
-        customerSuggestions.innerHTML = ''
-        const suggestions = mydata.filter(function(suchInput) {
-    
-              if(suchInput.surname.toLowerCase().startsWith(input)){       
-                return suchInput.surname.toLowerCase().startsWith(input)}
-              else if(suchInput.forename.toLowerCase().startsWith(input)){ 
-                return suchInput.forename.toLowerCase().startsWith(input)}
-              else if(suchInput.cNumber.toLowerCase().startsWith(input)){ 
-                return suchInput.cNumber.toLowerCase().startsWith(input)}
-            
-        });
-    
-      suggestions.forEach(function(suggested){
-            const p = document.createElement('p')
-            p.innerHTML = suggested.forename + ' ' + suggested.surname
-    
-            p.addEventListener('click', function(){
-              let c = document.getElementById("setCustomer")
-              let s = document.getElementById("customerSuggestions")
-              s.textContent=''
-              c.innerHTML = 'Kunde: '+suggested.surname+' '+suggested.cNumber 
-            })   
-            customerSuggestions.appendChild(p)
-        });
-        if (input === ''){
-          customerSuggestions.innerHTML = ''
-        }
-    })
-
     console.dir(response);
   })
+/* -----------------------------------GET CUSTOMER ----------------------------------------- */
+  axios.get('/users')
+  .then(function (response) {
+  // handle success
+  customerData = response
+  console.log(customerData+'customerData')
+
+  const searchInput = document.getElementById("navSearch")
+  const suggestionsPanel = document.getElementById("suggestions")
+  const mydata = response.data
+  console.log(response.value+"mydata")
+  const customerInput = document.getElementById("customerInput")
+  const customerSuggestions = document.getElementById("customerSuggestions")
+  var divID = 0
+  let movieID = 0
+  
+  customerInput.addEventListener('keyup', function(){
+      console.log(customerInput.value)
+      const input = customerInput.value.toLowerCase()
+      customerSuggestions.innerHTML = ''
+      const suggestions = customerData.filter(function(suchInput) {
+  
+            if(suchInput.surname.toLowerCase().startsWith(input)){       
+              return suchInput.surname.toLowerCase().startsWith(input)}
+            else if(suchInput.forename.toLowerCase().startsWith(input)){ 
+              return suchInput.forename.toLowerCase().startsWith(input)}
+            else if(suchInput.cNumber.toLowerCase().startsWith(input)){ 
+              return suchInput.cNumber.toLowerCase().startsWith(input)}
+          
+      });
+  
+    suggestions.forEach(function(suggested){
+          const p = document.createElement('p')
+          p.innerHTML = suggested.forename + ' ' + suggested.surname
+  
+          p.addEventListener('click', function(){
+            let c = document.getElementById("setCustomer")
+            let s = document.getElementById("customerSuggestions")
+            s.textContent=''
+            c.innerHTML = 'Kunde: '+suggested.surname+' '+suggested.cNumber 
+          })   
+          customerSuggestions.appendChild(p)
+      });
+      if (input === ''){
+        customerSuggestions.innerHTML = ''
+      }
+  })
+
+  console.dir(response);
+})
+/*----------------------------------------------------------------------------------------------------------------*/
+
   .catch(function (error) {
     // handle error
     console.log(error);
@@ -121,6 +150,11 @@ async function getdata() {
   });
 }
 
+    function removeMovie(val) {  
+              let r = document.getElementById('movieDiv'+val)
+              r.remove()
+    }
+/*
     function myFunction() {
       var y = document.getElementById("output")
       if (y.style.display === "none") {
@@ -134,8 +168,8 @@ async function getdata() {
       } else {
         x.style.display = "none"
       }     
-    }
-
+    }  */
+/*
     function uncheckBox() {
       if (document.getElementById("anzahlVerleih").checked === true) {
         document.getElementById("anzahlVerleih").checked = false
@@ -152,7 +186,7 @@ async function getdata() {
       setTimeout(function() {
         $('#ausgeliehen').fadeOut('fast')
     }, 800);
-    }
+    }   */
 
     window.addEventListener('DOMContentLoaded', (event) => {
     console.log('DOM fully loaded and parsed')
