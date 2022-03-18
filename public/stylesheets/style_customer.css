@@ -1,0 +1,402 @@
+    html{width: 100%;
+        height: 100%;}
+
+    body{width: 100%;
+        height: 100%;
+        margin-top: 0px;
+        background:linear-gradient(rgba(17, 16, 16, 0.5), rgba(0, 0, 0, 0.5)), url(https://media.timeout.com/images/105306356/image.jpg);
+        padding-top: 0px;
+        padding-bottom: 0px;
+        margin-left: 0;
+        background-position: center center;
+        background-attachment: fixed;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-color: rgb(56, 54, 54);}
+
+    article{
+        height: 95%;
+        display: flex;
+        align-items: center;
+        position: relative;
+    }    
+
+    footer{
+        background-color: rgb(0, 0, 0);
+        width: 100%;
+        height: 5%;
+        position: fixed;
+        margin-bottom: 0px;
+        display: flex;
+        color: white;
+        display: table;
+    }
+
+  footer div{
+       display: table-cell;
+       vertical-align: middle;
+       width: 100%;
+       height: 100%;
+       font-family: Verdana, Geneva, Tahoma, sans-serif;
+       font-size: 70%;
+       text-align: center;
+  }
+
+    #background{
+        z-index: -1;}
+
+    #header_background{
+        position: absolute;
+        z-index: -1;
+        filter: brightness(50%);
+        margin-left:auto;
+        margin-right: auto;
+        height: auto;
+        width: 100%;}
+
+    nav{width:100%;
+        position: fixed;
+        top: 0%;
+        height: 100px;
+        background-color: rgb(133, 15, 15);
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        z-index: 1;}
+
+     h1{font-size: 200%;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        text-align: center;
+        display: flex;
+        width: 50%;} 
+
+    h1 a{
+        text-decoration: none;
+        color: white;
+        height: 100%;
+        text-align: center;}
+
+      h2{
+         font-family: Verdana, Geneva, Tahoma, sans-serif;
+      }  
+
+    #logoWrapper{
+        height: 100%;
+        width: 33%;
+        display: flex;
+        float: left;
+        margin-left: 50px;
+        margin-top: 20px;
+        padding-bottom: 10px;
+    }
+
+    #logo{
+        height: 50%;
+        width: auto;
+        margin-top: 15px;
+    }    
+        
+     #logoWrapper:hover{
+        text-decoration: none;
+        color: white;
+    }
+
+  #rent{width: 33%;
+        margin-right: 50px;
+        margin-top: 10px;}
+
+  #rent p{font-family: Verdana, Geneva, Tahoma, sans-serif;
+        color: white;
+        font-size: 100%;
+        width: 200px;
+        float: right;
+        text-align: center;} 
+
+    p a:hover{
+        font-size: 18px;} 
+
+    p a{text-decoration: none;
+        color: white;}   
+
+
+       
+ #input{
+        background-color: white;
+        width: 500px;
+        min-height: 400px;
+        position: relative;
+        margin: auto;      
+        border-radius: 25px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        box-shadow: 0px 5px 8px 3px rgb(0, 0, 0);}
+
+  #output{
+        background-color: white;
+        width: 500px;
+        min-height: 400px;
+        position: relative;
+        margin: auto;
+        border-radius: 25px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        box-shadow: 0px 5px 8px 3px rgb(0, 0, 0);
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+      }
+
+  #finished{
+        background-color: white;
+        width: 500px;
+        min-height: 400px;
+        position: absolute;
+        margin: auto;
+        border-radius: 25px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        left: 50%;
+        margin-left: -250px;
+        top: 50%;
+        margin-top: -200px;
+        background: url(https://static.independent.co.uk/s3fs-public/thumbnails/image/2015/12/17/14/cinema-getty.jpg?width=982&height=726&auto=webp&quality=75);
+        background-position: center center;
+        background-attachment: local;
+        background-size: cover;
+        background-repeat: space;
+        background-color: rgb(56, 54, 54);
+  }
+
+  #finished p{
+        width: 500px;
+        margin-top: 180px;
+        text-align: center;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-size: 35px;
+        font-weight: bolder;
+        color: white;
+  }
+
+   table{margin-top: 25%;
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+        border-collapse: collapse;}
+
+
+  th, td{
+        width: 130px;
+        height: 40px;
+        border: 1px solid rgb(175, 175, 175);
+        text-align: left;
+        padding-left: 5px;}  
+
+     th{background-color: rgb(151, 151, 151);
+        color: white;} 
+
+  #anzahlVerleih{
+        background-color:rgb(133, 15, 15);
+        border-radius: 5px;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        width: 100%;
+        height: 100%;}   
+
+     form{
+        height: 200px;
+        width: 498px; 
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+     }
+
+  form input{background-color: white;
+        width: 300px;
+        height: 50%;
+        margin: auto;
+        padding-left: 30px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        border-radius: 25px;
+        color: grey;
+     }
+
+  form label{
+        padding-bottom: 10px;
+        padding-top: 10px;
+  }
+
+     #cover{
+        width: 100%;
+        height: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        justify-items: center;
+     }
+
+     #cover img:hover{
+        cursor: pointer;
+        
+     }
+
+    #searchbar{background-color: white;
+        width: 300px;
+        height: 30px;
+        margin: auto;
+        border-radius: 25px;
+    }
+
+/* ------------------------ SUCHE ------------------------------------------------------------------------------------------------------------------*/        
+
+   #container{
+        background-color: rgb(255, 255, 255);
+        border: none;
+        width: 33%;
+        height: 60%;
+        margin: auto;
+        border-radius: 7px;
+        font-size: 26px;
+
+        }
+
+    #suggestions{
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        background-color: rgb(255, 255, 255);
+        border-radius: 7px;
+        width: 100%;
+        min-height: 0px;
+        margin-top: 0%;
+        display: flex;
+        flex-direction: column;
+    }
+
+
+    #suggestions p{
+        padding-left: 27px;
+        padding-top: 4px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        height: 30px;
+        color: grey;
+        font-size: 20px;
+        border-radius: 7px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        background-color: rgb(255, 255, 255);
+    }
+
+    #suggestions p:hover{
+        background-color: lightgrey;
+        cursor: pointer;
+    }
+
+  #navSearch{background: transparent;
+    padding-left: 30px;
+        border: none;
+        width: 100%;
+        height: 100%;
+        margin: auto;
+        border-radius: 0px;
+        font-size: 24px;} 
+
+  #navSearch:focus{
+        outline: none;
+  }
+
+
+/* ------------------------ SUCHE ---------------------------------------------------------------------------------------------------------------------*/
+
+    #submitWrapper{
+        height: 130px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        justify-items:center;
+        align-items: center;
+    }
+
+    #submit{
+        width: 100px;
+        height: 66px;
+        background-color: rgb(133, 15, 15);
+        font-size: 20px;
+        color: white;
+        text-align: center;
+        padding-left: 7px;
+        border-radius: 25px;
+    }
+
+    #submit:hover{
+        width: 110px;
+        height: 76px;
+        background-color: white;
+        border: 4px solid rgb(133, 15, 15);
+        font-size: 24px;
+        color: rgb(133, 15, 15);
+        text-align: center;
+        padding-left: 7px;
+        cursor: pointer;
+        border-radius: 25px;
+    }
+
+    #buttonWrapper{
+        margin-top: 17%;
+        width: 500px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    #finish{
+        width: 100px;
+        height: 66px;
+        background-color: rgb(133, 15, 15);
+        font-size: 20px;
+        color: white;
+        text-align: center;
+        padding-left: 7px;
+        border-radius: 25px;
+    }
+
+    #finish:hover{
+        width: 110px;
+        height: 76px;
+        background-color: white;
+        border: 4px solid rgb(133, 15, 15);
+        font-size: 20px;
+        color: rgb(133, 15, 15);
+        text-align: center;
+        padding-left: 7px;
+        cursor: pointer;
+        border-radius: 25px;
+    }
+
+    #rueckgabeButton{
+        width: 100px;
+        height: 66px;
+        background-color: rgb(133, 15, 15);
+        font-size: 20px;
+        color: white;
+        text-align: center;
+        padding-left: 7px;
+    }
+
+    #rueckgabeButton:hover{
+        width: 100px;
+        height: 66px;
+        background-color: white;
+        border: 4px solid rgb(133, 15, 15);
+        font-size: 20px;
+        color: rgb(133, 15, 15);
+        text-align: center;
+        padding-left: 7px;
+        cursor: pointer;
+    }
+
