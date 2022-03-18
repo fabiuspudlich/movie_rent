@@ -1,4 +1,10 @@
 # videoverleih
  new repo
 
-in CMD/Terminal: DEBUG=videoverleih:* npm start
+run in CMD/Terminal:
+
+for Windows:
+npm start
+
+for Mac:
+DEBUG=videoverleih:* npm start
