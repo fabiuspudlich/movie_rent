@@ -5,7 +5,7 @@ function createMovieSearch(movieData) {
   const searchInput = document.getElementById("navSearch")
   const suggestionsPanel = document.getElementById("suggestions")
   const mydata = movieData
-  //  console.log(response.movies.value+"mydata")
+  console.log(mydata+"mydata")
   const customerInput = document.getElementById("customerInput")
   const customerSuggestions = document.getElementById("customerSuggestions")
   var divID = 0
@@ -137,6 +137,7 @@ async function getdata() {
     axios.get('/get_data')
     .then(function (response) {
     // handle success
+    console.log(response)
     movieData = response.movies
     usersData = response.users
     createMovieSearch(movieData)

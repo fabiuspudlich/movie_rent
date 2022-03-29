@@ -22,7 +22,7 @@ router.get('/get_data', function(req, res, next) {
     data.users = users
   });
 
-    // movies.json Datei lesen
+  // movies.json Datei lesen
   fs.readFile('database/movies.json', 'utf8', function(err, movies) {
     if (err) { return console.log(err) };
     data.movies = movies
