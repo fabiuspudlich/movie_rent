@@ -1,104 +1,98 @@
 let movieData = null
 let customerData = null
 
-async function getdata() {
-    // Make a request for a user with a given ID
-    axios.get('/get_movies')
-    .then(function (response) {
-    // handle success
-    movieData = response.movies
-
-    const searchInput = document.getElementById("navSearch")
-    const suggestionsPanel = document.getElementById("suggestions")
-    const mydata = response.movies.data
-    console.log(response.movies.value+"mydata")
-    const customerInput = document.getElementById("customerInput")
-    const customerSuggestions = document.getElementById("customerSuggestions")
-    var divID = 0
-    let movieID = 0
-    let movieDivID = 0
-    
-    searchInput.addEventListener('keyup', function(){
-        console.log(searchInput.value)
-        const input = searchInput.value.toLowerCase()
-        suggestionsPanel.innerHTML = ''
-        const suggestions = mydata.filter(function(suchInput) {
-          if(suchInput.title.toLowerCase().startsWith(input)){       
-            return suchInput.title.toLowerCase().startsWith(input)}      
-      });
-    
-      suggestions.forEach(function(suggested){
-            divID++
-            t = suggested.title+' '+suggested.price
-            const p = document.createElement('p')
-            p.innerHTML = suggested.title
-    
-            p.addEventListener('click', function(){
-              showWindow()
-              undim()
-              console.log('KLICK')
-              suggestionsPanel.textContent=''
-              let i = document.getElementById("inputMovies")
-              let wrapper = document.createElement("div")
-              wrapper.setAttribute("id", 'div'+divID)
-            /*  let div = document.getElementById("div"+divID) */
-                let m = document.createElement("p")
-                m.innerHTML = 'Titel: '+suggested.title+' | Verfügbar: '+suggested.available+' | Preis: '+suggested.price
-                var b = document.createElement("button")           
-                b.innerHTML = '+'
-    
-                b.addEventListener('click', function(){
-                  console.log('addKart')
-                  movieDivID++ 
-                  let t = suggested.title
-                  console.log(t)
-                  let k = document.getElementById("setMovies")
-                    let selectedMovie = document.createElement("div")
-                    selectedMovie.setAttribute("id", 'movieDiv'+movieDivID)
-                  let button = document.createElement("button")                  
-                  button.innerHTML = '-'
-                  button.setAttribute("id", 'buttonID'+movieDivID)
-                  button.setAttribute("value", movieDivID)
-                  button.setAttribute("onclick", 'removeMovie(this.value)')
-                  let movie = document.createElement('p')
-                  movie.setAttribute("id", 'movie'+movieDivID)
-                  movie.innerHTML = t
-         /*         button.addEventListener('click', function(){
-                    const removeID = movieDivID
-                    let r = document.getElementById('movieDiv'+removeID)
-                    r.remove()
-                })  */
-                  k.appendChild(selectedMovie)
-                  selectedMovie.appendChild(movie)
-                  selectedMovie.appendChild(button)                                                 
-                })
-    
-              console.log(suggested.title)
-              i.appendChild(wrapper)  
-              wrapper.appendChild(m)
-              wrapper.appendChild(b)
-              
-            })
-    
-            suggestionsPanel.appendChild(p)
-        })
-        
-        if (input === ''){
-            suggestionsPanel.innerHTML = ''
-        }
-    }) 
-    console.dir(response.movies);
-  })
-/* -----------------------------------GET CUSTOMER ----------------------------------------- */
+function createMovieSearch(movieData) {
+  const searchInput = document.getElementById("navSearch")
+  const suggestionsPanel = document.getElementById("suggestions")
+  const mydata = movieData
+  //  console.log(response.movies.value+"mydata")
+  const customerInput = document.getElementById("customerInput")
+  const customerSuggestions = document.getElementById("customerSuggestions")
+  var divID = 0
+  let movieID = 0
+  let movieDivID = 0
   
+  searchInput.addEventListener('keyup', function() {
+      console.log(searchInput.value)
+      const input = searchInput.value.toLowerCase()
+      suggestionsPanel.innerHTML = ''
+      const suggestions = mydata.filter(function(suchInput) {
+        if(suchInput.title.toLowerCase().startsWith(input)){       
+          return suchInput.title.toLowerCase().startsWith(input)}      
+    });
+  
+    suggestions.forEach(function(suggested) {
+          divID++
+          t = suggested.title+' '+suggested.price
+          const p = document.createElement('p')
+          p.innerHTML = suggested.title
+  
+          p.addEventListener('click', function(){
+            showWindow()
+            undim()
+            console.log('KLICK')
+            suggestionsPanel.textContent=''
+            let i = document.getElementById("inputMovies")
+            let wrapper = document.createElement("div")
+            wrapper.setAttribute("id", 'div'+divID)
+          /*  let div = document.getElementById("div"+divID) */
+              let m = document.createElement("p")
+              m.innerHTML = 'Titel: '+suggested.title+' | Verfügbar: '+suggested.available+' | Preis: '+suggested.price
+              var b = document.createElement("button")           
+              b.innerHTML = '+'
+  
+              b.addEventListener('click', function(){
+                console.log('addKart')
+                movieDivID++ 
+                let t = suggested.title
+                console.log(t)
+                let k = document.getElementById("setMovies")
+                  let selectedMovie = document.createElement("div")
+                  selectedMovie.setAttribute("id", 'movieDiv'+movieDivID)
+                let button = document.createElement("button")                  
+                button.innerHTML = '-'
+                button.setAttribute("id", 'buttonID'+movieDivID)
+                button.setAttribute("value", movieDivID)
+                button.setAttribute("onclick", 'removeMovie(this.value)')
+                let movie = document.createElement('p')
+                movie.setAttribute("id", 'movie'+movieDivID)
+                movie.innerHTML = t
+       /*         button.addEventListener('click', function(){
+                  const removeID = movieDivID
+                  let r = document.getElementById('movieDiv'+removeID)
+                  r.remove()
+              })  */
+                k.appendChild(selectedMovie)
+                selectedMovie.appendChild(movie)
+                selectedMovie.appendChild(button)                                                 
+              })
+  
+            console.log(suggested.title)
+            i.appendChild(wrapper)  
+            wrapper.appendChild(m)
+            wrapper.appendChild(b)
+            
+          })
+  
+          suggestionsPanel.appendChild(p)
+      })
+      
+      if (input === ''){
+          suggestionsPanel.innerHTML = ''
+      }
+  }) 
+
+}
+
+function createUsersSearch(usersData) {
   // handle success
-  customerData = response.users
+  customerData = usersData
   console.log(customerData+'customerData')
 
   const searchInput = document.getElementById("navSearch")
   const suggestionsPanel = document.getElementById("suggestions")
-  const mydata = response.users.data
-  console.log(response.users.value+"mydata")
+  const mydata = usersData
+  //  console.log(response.users.value+"mydata")
   const customerInput = document.getElementById("customerInput")
   const customerSuggestions = document.getElementById("customerSuggestions")
   var divID = 0
@@ -136,8 +130,18 @@ async function getdata() {
       }
   })
 
-  console.dir(response.users);
+}
 
+async function getdata() {
+    // Make a request for a user with a given ID
+    axios.get('/get_data')
+    .then(function (response) {
+    // handle success
+    movieData = response.movies
+    usersData = response.users
+    createMovieSearch(movieData)
+    createUsersSearch(usersData)
+  })
 }
 
     function removeMovie(val) {  

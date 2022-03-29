@@ -1,16 +1,41 @@
 var express = require('express');
 var router = express.Router();
+fs = require('fs');
 
-/* GET home page. */
+/* index.html an den Browser senden */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-/* GET movies.json */
-router.get('/get_movies', function(req, res, next) {
-  let movies = [{"title" : "The Avengers", "available" : "5", "price" : "2€"}, {"title" : "Matrix", "available" : "7", "price" : "2€"}, {"title" : "Enter The Void", "available" : "3", "price" : "2€"}]
-  res.json(movies);
+/* GET movies and users */
+router.get('/get_data', function(req, res, next) {
+
+  // erstelle data-Objekt, um es an den Browser zu senden
+  let data = {
+    users: null,
+    movies: null
+  }
+
+  // users.json Datei lesen
+  fs.readFile('database/users.json', 'utf8', function(err, users) {
+    if (err) { return console.log(err) };
+    data.users = users
+  });
+
+    // movies.json Datei lesen
+  fs.readFile('database/movies.json', 'utf8', function(err, movies) {
+    if (err) { return console.log(err) };
+    data.movies = movies
+  });
+
+  // Daten an den Browser senden
+  res.json(data);
+
 });
+
+
+
+
 
 /* Save movies.json */
 router.post('/save_movies', function(req, res, next) {
