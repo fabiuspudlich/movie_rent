@@ -4,7 +4,7 @@ let customerData = null
 async function getdata() {
     // Make a request for a user with a given ID
     axios.get('/get_movies')
-    .then(function (response.movies) {
+    .then(function (response) {
     // handle success
     movieData = response.movies
 
@@ -87,19 +87,18 @@ async function getdata() {
             suggestionsPanel.innerHTML = ''
         }
     }) 
-    console.dir(response);
+    console.dir(response.movies);
   })
 /* -----------------------------------GET CUSTOMER ----------------------------------------- */
-  axios.get('/users')
-  .then(function (response) {
+  
   // handle success
-  customerData = response
+  customerData = response.users
   console.log(customerData+'customerData')
 
   const searchInput = document.getElementById("navSearch")
   const suggestionsPanel = document.getElementById("suggestions")
-  const mydata = response.data
-  console.log(response.value+"mydata")
+  const mydata = response.users.data
+  console.log(response.users.value+"mydata")
   const customerInput = document.getElementById("customerInput")
   const customerSuggestions = document.getElementById("customerSuggestions")
   var divID = 0
@@ -137,17 +136,8 @@ async function getdata() {
       }
   })
 
-  console.dir(response);
-})
-/*----------------------------------------------------------------------------------------------------------------*/
+  console.dir(response.users);
 
-  .catch(function (error) {
-    // handle error
-    console.log(error);
-  })
-  .then(function () {
-    // always executed
-  });
 }
 
     function removeMovie(val) {  
