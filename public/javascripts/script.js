@@ -4,14 +4,14 @@ let customerData = null
 async function getdata() {
     // Make a request for a user with a given ID
     axios.get('/get_movies')
-    .then(function (response) {
+    .then(function (response.movies) {
     // handle success
-    movieData = response
+    movieData = response.movies
 
     const searchInput = document.getElementById("navSearch")
     const suggestionsPanel = document.getElementById("suggestions")
-    const mydata = response.data
-    console.log(response.value+"mydata")
+    const mydata = response.movies.data
+    console.log(response.movies.value+"mydata")
     const customerInput = document.getElementById("customerInput")
     const customerSuggestions = document.getElementById("customerSuggestions")
     var divID = 0
