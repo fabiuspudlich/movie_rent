@@ -7,35 +7,32 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-/* GET movies and users */
-router.get('/get_data', function(req, res, next) {
+router.get('/get_data', (req, res, next) => {
+  //  get users
+  getUsers(function (cb) {
+    res.json({data: cb.users});
+  });
+  //  get movies
+  getMovies(function (cb) {
+    res.json({data: cb.movies});
+  });
+});
 
-  // erstelle data-Objekt, um es an den Browser zu senden
-  let data = {
-    users: null,
-    movies: null
-  }
-
+var getUsers = function(cb) {
   // users.json Datei lesen
   fs.readFile('database/users.json', 'utf8', function(err, users) {
     if (err) { return console.log(err) };
-    data.users = users
+    cb({users: JSON.parse(users)});
   });
+}
 
+var getMovies = function(cb) { 
   // movies.json Datei lesen
   fs.readFile('database/movies.json', 'utf8', function(err, movies) {
     if (err) { return console.log(err) };
-    data.movies = movies
+    cb({movies: JSON.parse(movies)});
   });
-
-  // Daten an den Browser senden
-  res.json(data);
-
-});
-
-
-
-
+}
 
 /* Save movies.json */
 router.post('/save_movies', function(req, res, next) {
