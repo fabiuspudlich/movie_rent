@@ -1,5 +1,8 @@
 let movieData = null
 let customerData = null
+var outputArray = []
+var outputForm = []
+
 
 function createMovieSearch(movieData) {
   const searchInput = document.getElementById("navSearch")
@@ -19,17 +22,15 @@ function createMovieSearch(movieData) {
     },
     {
         "title": "Enter The Void",
-        "available": "3",
+        "available": "0",
         "price": "2€",
         "movieID": "34567"
     }
 ]
-  console.log(mydata+"mydata")
   const customerInput = document.getElementById("customerInput")
   const customerSuggestions = document.getElementById("customerSuggestions")
   var divID = 0
   let movieDivID = 0
-  let outputForm = []
   console.log(outputForm)
   
   searchInput.addEventListener('keyup', function() {
@@ -45,7 +46,10 @@ function createMovieSearch(movieData) {
           divID++
           t = suggested.title+' '+suggested.price
           const p = document.createElement('p')
-          p.innerHTML = suggested.title
+          if(suggested.available<1){
+            p.innerHTML = suggested.title+" (LEER)"
+          } else{
+          p.innerHTML = suggested.title}
   
           p.addEventListener('click', function(){
             showWindow()
@@ -62,18 +66,16 @@ function createMovieSearch(movieData) {
               b.innerHTML = '+'
   
               b.addEventListener('click', function(){
-                console.log('addKart')
-
-                let form = document.getElementById("output")
-                outputForm.push(suggested.movieID)
-                console.log(outputForm)
-                form.value = outputForm
                 movieDivID++ 
                 let t = suggested.title
                 console.log(t)
                 let k = document.getElementById("setMovies")
                   let selectedMovie = document.createElement("div")
                   selectedMovie.setAttribute("id", 'movieDiv'+movieDivID)
+
+                outputForm.splice(movieDivID, 0, suggested.movieID)
+                console.log(outputForm)
+                
                 let button = document.createElement("button")                  
                 button.innerHTML = '-'
                 button.setAttribute("id", 'buttonID'+movieDivID)
@@ -82,11 +84,6 @@ function createMovieSearch(movieData) {
                 let movie = document.createElement('p')
                 movie.setAttribute("id", 'movie'+movieDivID)
                 movie.innerHTML = t
-       /*         button.addEventListener('click', function(){
-                  const removeID = movieDivID
-                  let r = document.getElementById('movieDiv'+removeID)
-                  r.remove()
-              })  */
                 k.appendChild(selectedMovie)
                 selectedMovie.appendChild(movie)
                 selectedMovie.appendChild(button)                                                 
@@ -183,7 +180,6 @@ function createUsersSearch(usersData) {
         "cNumber": "64525"
     }
 ]
-  console.log(customerData+'customerData')
 
   const searchInput = document.getElementById("navSearch")
   const suggestionsPanel = document.getElementById("suggestions")
@@ -243,50 +239,21 @@ async function getdata() {
 
     function removeMovie(val) {  
               let r = document.getElementById('movieDiv'+val)
+              console.log("Value: "+val)
+            
+              outputForm.splice(val-1, 1, "")
+              console.log("outputForm: "+outputForm)          
               r.remove()
     }
-/*
-    function myFunction() {
-      var y = document.getElementById("output")
-      if (y.style.display === "none") {
-        y.style.display = "block"
-      } else {
-        y.style.display = "none"
-      }        
-      var x = document.getElementById("input")
-      if (x.style.display === "none") {
-        x.style.display = "flex"
-      } else {
-        x.style.display = "none"
-      }     
-    }  */
-/*
-    function uncheckBox() {
-      if (document.getElementById("anzahlVerleih").checked === true) {
-        document.getElementById("anzahlVerleih").checked = false
-      }
-    }
 
-    function filmA() {
-      var z = document.getElementById("ausgeliehen")
-      if (z.style.display === "none") {
-        z.style.display = "block"
-      } else {
-        z.style.display = "none"
-      }
-      setTimeout(function() {
-        $('#ausgeliehen').fadeOut('fast')
-    }, 800);
-    }   */
+    
 
     window.addEventListener('DOMContentLoaded', (event) => {
     console.log('DOM fully loaded and parsed')
     getdata();
    });
 
-
    function kartView(){
-     console.log("kartView")
      let k = document.getElementById("shoppingKart")
      if (k.style.marginRight === "0px"){
        k.style.marginRight = "-200px"
@@ -324,9 +291,10 @@ async function getdata() {
    }
 
    function saveData(){
+    outputArray = outputForm.filter(Number)               
+    output.value = outputArray
     let o = document.getElementById("output").value
  /*   o.value */
-    console.log("saveData")
     axios.post('/save_movies', {
       o: output.value
     })
