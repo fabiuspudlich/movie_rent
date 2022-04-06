@@ -6,15 +6,19 @@ fs = require('fs');
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
-
+let data = {
+  movies: null,
+  users: null
+}
 router.get('/get_data', (req, res, next) => {
   //  get users
   getUsers(function (cb) {
-    res.json({data: cb.users});
+    data.users = cb.users
   });
   //  get movies
   getMovies(function (cb) {
-    res.json({data: cb.movies});
+    data.movies = cb.movies
+    res.json({data: data});
   });
 });
 
