@@ -4,13 +4,33 @@ let customerData = null
 function createMovieSearch(movieData) {
   const searchInput = document.getElementById("navSearch")
   const suggestionsPanel = document.getElementById("suggestions")
-  const mydata = movieData
+  const mydata = [
+    {
+        "title": "The Avengers",
+        "available": "5",
+        "price": "2€",
+        "movieID": "12345" 
+    },
+    {
+        "title": "Matrix",
+        "available": "7",
+        "price": "2€",
+        "movieID": "23456"
+    },
+    {
+        "title": "Enter The Void",
+        "available": "3",
+        "price": "2€",
+        "movieID": "34567"
+    }
+]
   console.log(mydata+"mydata")
   const customerInput = document.getElementById("customerInput")
   const customerSuggestions = document.getElementById("customerSuggestions")
   var divID = 0
-  let movieID = 0
   let movieDivID = 0
+  let outputForm = []
+  console.log(outputForm)
   
   searchInput.addEventListener('keyup', function() {
       console.log(searchInput.value)
@@ -43,6 +63,11 @@ function createMovieSearch(movieData) {
   
               b.addEventListener('click', function(){
                 console.log('addKart')
+
+                let form = document.getElementById("output")
+                outputForm.push(suggested.movieID)
+                console.log(outputForm)
+                form.value = outputForm
                 movieDivID++ 
                 let t = suggested.title
                 console.log(t)
@@ -86,7 +111,78 @@ function createMovieSearch(movieData) {
 
 function createUsersSearch(usersData) {
   // handle success
-  customerData = usersData
+  customerData = [
+    {
+        "forename": "Peter",
+        "surname": "Parker",
+        "cNumber": "12345"
+    },
+    {
+        "forename": "Jeffrey",
+        "surname": "Lebowski",
+        "cNumber": "54321"
+    },
+    {
+        "forename": "Jeff",
+        "surname": "Bridges",
+        "cNumber": "13254"
+    },
+    {
+        "forename": "Uwe",
+        "surname": "Boll",
+        "cNumber": "36253"
+    },
+    {
+        "forename": "Hermine",
+        "surname": "Granger",
+        "cNumber": "56342"
+    },
+    {
+        "forename": "Sarah",
+        "surname": "Connor",
+        "cNumber": "36243"
+    },
+    {
+        "forename": "Dana",
+        "surname": "Scully",
+        "cNumber": "46253"
+    },
+    {
+        "forename": "Lisa",
+        "surname": "Simpson",
+        "cNumber": "53412"
+    },
+    {
+        "forename": "Elisabeth",
+        "surname": "Swann",
+        "cNumber": "32756"
+    },
+    {
+        "forename": "Clarice",
+        "surname": "Starling",
+        "cNumber": "52436"
+    },
+    {
+        "forename": "James",
+        "surname": "Bond",
+        "cNumber": "46354"
+    },
+    {
+        "forename": "Jack",
+        "surname": "Sparrow",
+        "cNumber": "56274"
+    },
+    {
+        "forename": "James",
+        "surname": "Kirk",
+        "cNumber": "14432"
+    },
+    {
+        "forename": "Marty",
+        "surname": "McFly",
+        "cNumber": "64525"
+    }
+]
   console.log(customerData+'customerData')
 
   const searchInput = document.getElementById("navSearch")
@@ -232,7 +328,7 @@ async function getdata() {
  /*   o.value */
     console.log("saveData")
     axios.post('/save_movies', {
-      o: o
+      o: output.value
     })
     .then(function (response) {
       console.log(response);

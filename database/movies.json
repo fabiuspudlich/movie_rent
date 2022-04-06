@@ -2,16 +2,19 @@
     {
         "title": "The Avengers",
         "available": "5",
-        "price": "2€"
+        "price": "2€",
+        "movieID": "12345" 
     },
     {
         "title": "Matrix",
         "available": "7",
-        "price": "2€"
+        "price": "2€",
+        "movieID": "23456"
     },
     {
         "title": "Enter The Void",
         "available": "3",
-        "price": "2€"
+        "price": "2€",
+        "movieID": "34567"
     }
 ]

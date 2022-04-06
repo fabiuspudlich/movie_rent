@@ -265,7 +265,7 @@ p a{text-decoration: none;
   position: fixed;
   width: 100px;
   margin-top: -250px;
-  padding-left: 20px;}
+  padding-left: 27px;}
 
 #customerInput{
   width: 140px;
@@ -323,7 +323,7 @@ p a{text-decoration: none;
 
 #output{
   position: fixed;
-  margin-left: -10000px; 
+  margin-left: -100px; 
 }
 
 #setMovies div{
