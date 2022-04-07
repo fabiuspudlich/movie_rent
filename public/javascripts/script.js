@@ -3,11 +3,23 @@ let customerData = null
 var outputArray = []
 var outputForm = []
 
+async function getdata() {
+  // Make a request for a user with a given ID
+  axios.get('/get_data')
+  .then(function (response) {
+  // handle success
+  console.log(response)
+  movieData = response.data.data.movies
+  usersData = response.data.data.users
+  createMovieSearch(movieData)
+  createUsersSearch(usersData)
+})
+}
 
 function createMovieSearch(movieData) {
   const searchInput = document.getElementById("navSearch")
   const suggestionsPanel = document.getElementById("suggestions")
-  const mydata = response.data.data.movies
+  const mydata = movieData
   const customerInput = document.getElementById("customerInput")
   const customerSuggestions = document.getElementById("customerSuggestions")
   var divID = 0
@@ -89,7 +101,7 @@ function createMovieSearch(movieData) {
 
 function createUsersSearch(usersData) {
   // handle success
-  customerData = response.data.data.users
+  customerData = usersData
 
   const searchInput = document.getElementById("navSearch")
   const suggestionsPanel = document.getElementById("suggestions")
@@ -134,18 +146,6 @@ function createUsersSearch(usersData) {
 
 }
 
-async function getdata() {
-    // Make a request for a user with a given ID
-    axios.get('/get_data')
-    .then(function (response) {
-    // handle success
-    console.log(response)
-    movieData = response.movies
-    usersData = response.users
-    createMovieSearch(movieData)
-    createUsersSearch(usersData)
-  })
-}
 
     function removeMovie(val) {  
               let r = document.getElementById('movieDiv'+val)
@@ -183,14 +183,33 @@ async function getdata() {
      let dim = document.getElementById("dim")
      let dimNav = document.getElementById("dimNav")
      let search = document.getElementById("navSearch")
+     let cSearch = document.getElementById("customerSearch")
      search.addEventListener('focus', function(){
       if (search === document.activeElement){
       dim.style.display = "block"
       dimNav.style.display = "block"
       } 
      })
+     cSearch.addEventListener('focus', function(){
+      if (cSearch === document.activeElement){
+      dim.style.display = "block"
+      dimNav.style.display = "block"
+      } 
+     })
    }
 
+   
+
+   function loadPage(){
+     console.log("reload")
+     let a = document.getElementById("ausgeliehen")
+     a.style.display = "block" 
+     function reloadPage(){ 
+     window.location.reload()
+     }
+     let timeout = setTimeout(reloadPage, 1700)
+   }
+   
    dim()
 
    function undim(){
@@ -198,6 +217,31 @@ async function getdata() {
     let dimNav = document.getElementById("dimNav")
     dim.style.display = "none"
     dimNav.style.display= "none"
+   }
+
+   var style = 0
+
+   function changeStyle(){
+    let b = document.body
+    let k = document.getElementById("shoppingKartWrapper")
+    let m = document.getElementById("navSearch")
+    let c = document.getElementById("customerSearch")
+    let s = document.getElementById("styleChange")
+    if(style === 0){
+      style = 1
+      b.style = "width: 100%; height: 100%; margin-top: 0px; background:linear-gradient(rgba(17, 16, 16, 0.5), rgba(0, 0, 0, 0.5)), url(https://media.timeout.com/images/105306356/image.jpg); padding-top: 0px; padding-bottom: 0px; margin-left: 0; background-position: center center; background-attachment: fixed; background-size: cover; background-repeat: no-repeat; background-color: rgb(56, 54, 54);"
+      k.style.display = "none"
+      c.style.display = "block"
+      m.style.display = "none"
+      s.innerHTML = "Filme"
+    } else {
+      style = 0
+      b.style = "width: 100%; height: 100%; margin-top: 0px; background:linear-gradient(rgba(17, 16, 16, 0.5), rgba(0, 0, 0, 0.5)), url(https://i.imgur.com/jrEFD1z.jpeg); padding-top: 0px; padding-bottom: 0px; margin-left: 0; background-position: center center; background-attachment: fixed; background-size: cover; background-repeat: no-repeat; background-color: rgb(56, 54, 54);"
+      k.style.display = "block"
+      c.style.display = "none"
+      m.style.display = "block"
+      s.innerHTML = "Kunden"
+    }
    }
 
    function saveData(){
