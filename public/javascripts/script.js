@@ -103,14 +103,16 @@ function createUsersSearch(usersData) {
   // handle success
   customerData = usersData
 
-  const searchInput = document.getElementById("navSearch")
+/*const searchInput = document.getElementById("navSearch")
   const suggestionsPanel = document.getElementById("suggestions")
   const mydata = usersData
+  var divID = 0
+  let movieID = 0   */
   //  console.log(response.users.value+"mydata")
+  
   const customerInput = document.getElementById("customerInput")
   const customerSuggestions = document.getElementById("customerSuggestions")
-  var divID = 0
-  let movieID = 0
+  
   
   customerInput.addEventListener('keyup', function(){
       console.log(customerInput.value)
@@ -141,6 +143,44 @@ function createUsersSearch(usersData) {
       });
       if (input === ''){
         customerSuggestions.innerHTML = ''
+      }
+  })
+
+  // Nav Kundensuche
+
+  const navCustomerInput = document.getElementById("customerSearch")
+  const navCustomerSuggestions = document.getElementById("navCustomerSuggestions")
+  
+  
+  navCustomerInput.addEventListener('keyup', function(){
+      console.log(navCustomerInput.value)
+      const input = navCustomerInput.value.toLowerCase()
+      navCustomerSuggestions.innerHTML = ''
+      const suggestions = customerData.filter(function(suchInput) {
+  
+            if(suchInput.surname.toLowerCase().startsWith(input)){       
+              return suchInput.surname.toLowerCase().startsWith(input)}
+            else if(suchInput.forename.toLowerCase().startsWith(input)){ 
+              return suchInput.forename.toLowerCase().startsWith(input)}
+            else if(suchInput.cNumber.toLowerCase().startsWith(input)){ 
+              return suchInput.cNumber.toLowerCase().startsWith(input)}
+          
+      });
+  
+    suggestions.forEach(function(suggested){
+          const p = document.createElement('p')
+          p.innerHTML = suggested.forename + ' ' + suggested.surname
+  
+          p.addEventListener('click', function(){
+            let c = document.getElementById("setCustomer")
+            let s = document.getElementById("customerSuggestions")
+            s.textContent=''
+            c.innerHTML = 'Kunde: '+suggested.surname+' '+suggested.cNumber 
+          })   
+          navCustomerSuggestions.appendChild(p)
+      });
+      if (input === ''){
+        navCustomerSuggestions.innerHTML = ''
       }
   })
 
@@ -184,22 +224,25 @@ function createUsersSearch(usersData) {
      let dimNav = document.getElementById("dimNav")
      let search = document.getElementById("navSearch")
      let cSearch = document.getElementById("customerSearch")
+     let c = document.getElementById("navCustomerSuggestions")
      search.addEventListener('focus', function(){
       if (search === document.activeElement){
       dim.style.display = "block"
       dimNav.style.display = "block"
+      let n = document.getElementById("suggestions")
+      n.style.display = "block"      
       } 
      })
      cSearch.addEventListener('focus', function(){
       if (cSearch === document.activeElement){
       dim.style.display = "block"
       dimNav.style.display = "block"
+      c.style.display = "block" 
       } 
-     })
+     })  
    }
 
-   
-
+  
    function loadPage(){
      console.log("reload")
      let a = document.getElementById("ausgeliehen")
@@ -215,6 +258,18 @@ function createUsersSearch(usersData) {
    function undim(){
     let dim = document.getElementById("dim")
     let dimNav = document.getElementById("dimNav")
+    let i = document.getElementById("navSearch")
+    if(i.style.display === "block"){
+      let s = document.getElementById("suggestions")
+      s.style.display = "none"
+      let c = document.getElementById("navCustomerSuggestions")
+      c.style.display = "none"
+    }
+    let j = document.getElementById("customerSearch")
+    if(j.style.display === "block"){
+      let c = document.getElementById("navCustomerSuggestions")
+      c.style.display = "none"
+    }
     dim.style.display = "none"
     dimNav.style.display= "none"
    }
@@ -227,6 +282,7 @@ function createUsersSearch(usersData) {
     let m = document.getElementById("navSearch")
     let c = document.getElementById("customerSearch")
     let s = document.getElementById("styleChange")
+    let suggest = document.getElementById("suggestions")
     if(style === 0){
       style = 1
       b.style = "width: 100%; height: 100%; margin-top: 0px; background:linear-gradient(rgba(17, 16, 16, 0.5), rgba(0, 0, 0, 0.5)), url(https://media.timeout.com/images/105306356/image.jpg); padding-top: 0px; padding-bottom: 0px; margin-left: 0; background-position: center center; background-attachment: fixed; background-size: cover; background-repeat: no-repeat; background-color: rgb(56, 54, 54);"
@@ -234,13 +290,14 @@ function createUsersSearch(usersData) {
       c.style.display = "block"
       m.style.display = "none"
       s.innerHTML = "Filme"
+      suggest.style.display = "none"
     } else {
       style = 0
       b.style = "width: 100%; height: 100%; margin-top: 0px; background:linear-gradient(rgba(17, 16, 16, 0.5), rgba(0, 0, 0, 0.5)), url(https://i.imgur.com/jrEFD1z.jpeg); padding-top: 0px; padding-bottom: 0px; margin-left: 0; background-position: center center; background-attachment: fixed; background-size: cover; background-repeat: no-repeat; background-color: rgb(56, 54, 54);"
       k.style.display = "block"
       c.style.display = "none"
       m.style.display = "block"
-      s.innerHTML = "Kunden"
+      s.innerHTML = "Kunden"  
     }
    }
 
