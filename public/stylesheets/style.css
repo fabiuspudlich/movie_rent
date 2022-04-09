@@ -378,10 +378,9 @@ h1{font-size: 200%;
   margin-top: 3px;
 }
 
-  /*---------------------------------LISTE----------------------------------------------*/
+  /*--------------------------------- Filme Suchergebnisse ----------------------------------------------*/
 
 #input{
-  
   backdrop-filter: blur(10px);
   width: 500px;
   min-height: 100px;
@@ -390,8 +389,7 @@ h1{font-size: 200%;
   padding-bottom: 20px;
   position: relative;
   margin: auto;      
-  border-radius: 25px;
-  
+  border-radius: 25px; 
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
@@ -424,3 +422,36 @@ h1{font-size: 200%;
 
 #input div button:hover{
   cursor: pointer;}
+
+/* ------------------------------ Kunden Suchergebnisse ------------------------------------ */
+
+#userInput{
+  backdrop-filter: blur(10px);
+  width: 500px;
+  min-height: 100px;
+  max-height: 600px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  position: relative;
+  margin: auto;      
+  border-radius: 25px; 
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  box-shadow: 0px 5px 8px 3px rgb(0, 0, 0);
+  z-index: 1;}
+
+#inputUsers{
+  width: 90%;
+  max-height: 350px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  border-radius: 5px;
+
+  color: grey;
+  font-size: 14px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  text-align: center;
+  padding-top: 30px;
+  height: 50px;
+  background-color: rgb(255, 255, 255);}

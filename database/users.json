@@ -2,71 +2,99 @@
     {
         "forename": "Peter",
         "surname": "Parker",
-        "cNumber": "12345"
+        "cNumber": "12345",
+        "rentedMovies": [],
+        "rentTime": ""
     },
     {
         "forename": "Jeffrey",
         "surname": "Lebowski",
-        "cNumber": "54321"
+        "cNumber": "54321",
+        "rentedMovies": [12345, 34567, 23456],
+        "rentTime": "03.04.2022"
     },
     {
         "forename": "Jeff",
         "surname": "Bridges",
-        "cNumber": "13254"
+        "cNumber": "13254",
+        "rentedMovies": [],
+        "rentTime": ""
     },
     {
         "forename": "Uwe",
         "surname": "Boll",
-        "cNumber": "36253"
+        "cNumber": "36253",
+        "rentedMovies": [],
+        "rentTime": ""
     },
     {
         "forename": "Hermine",
         "surname": "Granger",
-        "cNumber": "56342"
+        "cNumber": "56342",
+        "rentedMovies": [],
+        "rentTime": ""
     },
     {
         "forename": "Sarah",
         "surname": "Connor",
-        "cNumber": "36243"
+        "cNumber": "36243",
+        "rentedMovies": [],
+        "rentTime": ""
     },
     {
         "forename": "Dana",
         "surname": "Scully",
-        "cNumber": "46253"
+        "cNumber": "46253",
+        "rentedMovies": [],
+        "rentTime": ""
     },
     {
         "forename": "Lisa",
         "surname": "Simpson",
-        "cNumber": "53412"
+        "cNumber": "53412",
+        "rentedMovies": [],
+        "rentTime": ""
     },
     {
         "forename": "Elisabeth",
         "surname": "Swann",
-        "cNumber": "32756"
+        "cNumber": "32756",
+        "rentedMovies": [],
+        "rentTime": ""
     },
     {
         "forename": "Clarice",
         "surname": "Starling",
-        "cNumber": "52436"
+        "cNumber": "52436",
+        "rentedMovies": [],
+        "rentTime": ""
     },
     {
         "forename": "James",
         "surname": "Bond",
-        "cNumber": "46354"
+        "cNumber": "46354",
+        "rentedMovies": [],
+        "rentTime": ""
     },
     {
         "forename": "Jack",
         "surname": "Sparrow",
-        "cNumber": "56274"
+        "cNumber": "56274",
+        "rentedMovies": [],
+        "rentTime": ""
     },
     {
         "forename": "James",
         "surname": "Kirk",
-        "cNumber": "14432"
+        "cNumber": "14432",
+        "rentedMovies": [],
+        "rentTime": ""
     },
     {
         "forename": "Marty",
         "surname": "McFly",
-        "cNumber": "64525"
+        "cNumber": "64525",
+        "rentedMovies": [],
+        "rentTime": ""
     }
 ]

@@ -96,7 +96,6 @@ function createMovieSearch(movieData) {
           suggestionsPanel.innerHTML = ''
       }
   }) 
-
 }
 
 function createUsersSearch(usersData) {
@@ -113,7 +112,6 @@ function createUsersSearch(usersData) {
   const customerInput = document.getElementById("customerInput")
   const customerSuggestions = document.getElementById("customerSuggestions")
   
-  
   customerInput.addEventListener('keyup', function(){
       console.log(customerInput.value)
       const input = customerInput.value.toLowerCase()
@@ -125,8 +123,7 @@ function createUsersSearch(usersData) {
             else if(suchInput.forename.toLowerCase().startsWith(input)){ 
               return suchInput.forename.toLowerCase().startsWith(input)}
             else if(suchInput.cNumber.toLowerCase().startsWith(input)){ 
-              return suchInput.cNumber.toLowerCase().startsWith(input)}
-          
+              return suchInput.cNumber.toLowerCase().startsWith(input)}        
       });
   
     suggestions.forEach(function(suggested){
@@ -151,20 +148,17 @@ function createUsersSearch(usersData) {
   const navCustomerInput = document.getElementById("customerSearch")
   const navCustomerSuggestions = document.getElementById("navCustomerSuggestions")
   
-  
   navCustomerInput.addEventListener('keyup', function(){
       console.log(navCustomerInput.value)
       const input = navCustomerInput.value.toLowerCase()
       navCustomerSuggestions.innerHTML = ''
       const suggestions = customerData.filter(function(suchInput) {
-  
             if(suchInput.surname.toLowerCase().startsWith(input)){       
               return suchInput.surname.toLowerCase().startsWith(input)}
             else if(suchInput.forename.toLowerCase().startsWith(input)){ 
               return suchInput.forename.toLowerCase().startsWith(input)}
             else if(suchInput.cNumber.toLowerCase().startsWith(input)){ 
-              return suchInput.cNumber.toLowerCase().startsWith(input)}
-          
+              return suchInput.cNumber.toLowerCase().startsWith(input)}      
       });
   
     suggestions.forEach(function(suggested){
@@ -172,10 +166,10 @@ function createUsersSearch(usersData) {
           p.innerHTML = suggested.forename + ' ' + suggested.surname
   
           p.addEventListener('click', function(){
-            let c = document.getElementById("setCustomer")
-            let s = document.getElementById("customerSuggestions")
-            s.textContent=''
-            c.innerHTML = 'Kunde: '+suggested.surname+' '+suggested.cNumber 
+             let i = document.getElementById("userInput")
+             let j = document.getElementById("inputUsers")
+             i.style.display = "flex"
+             j.innerHTML = suggested.forename + ' ' + suggested.surname + ' ' + suggested.cNumber + ' ' + suggested.rentedMovies + ' ' + suggested.rentTime
           })   
           navCustomerSuggestions.appendChild(p)
       });
@@ -183,9 +177,7 @@ function createUsersSearch(usersData) {
         navCustomerSuggestions.innerHTML = ''
       }
   })
-
 }
-
 
     function removeMovie(val) {  
               let r = document.getElementById('movieDiv'+val)
@@ -244,6 +236,8 @@ function createUsersSearch(usersData) {
 
   
    function loadPage(){
+     let i = document.getElementById("shoppingKartWrapper")
+     i.style.display = "none"
      console.log("reload")
      let a = document.getElementById("ausgeliehen")
      a.style.display = "block" 
@@ -283,6 +277,11 @@ function createUsersSearch(usersData) {
     let c = document.getElementById("customerSearch")
     let s = document.getElementById("styleChange")
     let suggest = document.getElementById("suggestions")
+    let input = document.getElementById("input")
+    let inputMovies = document.getElementById("inputMovies")
+    let userInput = document.getElementById("userInput")
+    let inputUsers = document.getElementById("inputUsers")
+    console.log(inputMovies.innerHTML)
     if(style === 0){
       style = 1
       b.style = "width: 100%; height: 100%; margin-top: 0px; background:linear-gradient(rgba(17, 16, 16, 0.5), rgba(0, 0, 0, 0.5)), url(https://media.timeout.com/images/105306356/image.jpg); padding-top: 0px; padding-bottom: 0px; margin-left: 0; background-position: center center; background-attachment: fixed; background-size: cover; background-repeat: no-repeat; background-color: rgb(56, 54, 54);"
@@ -291,13 +290,26 @@ function createUsersSearch(usersData) {
       m.style.display = "none"
       s.innerHTML = "Filme"
       suggest.style.display = "none"
-    } else {
+      input.style.display = "none"
+      if(inputUsers.innerHTML === ""){
+        userInput.style.display = "none"
+        }  
+        else{
+          userInput.style.display = "flex"}
+      }
+      else {
       style = 0
       b.style = "width: 100%; height: 100%; margin-top: 0px; background:linear-gradient(rgba(17, 16, 16, 0.5), rgba(0, 0, 0, 0.5)), url(https://i.imgur.com/jrEFD1z.jpeg); padding-top: 0px; padding-bottom: 0px; margin-left: 0; background-position: center center; background-attachment: fixed; background-size: cover; background-repeat: no-repeat; background-color: rgb(56, 54, 54);"
       k.style.display = "block"
       c.style.display = "none"
       m.style.display = "block"
-      s.innerHTML = "Kunden"  
+      s.innerHTML = "Kunden"
+      userInput.style.display = "none"
+      if(inputMovies.innerHTML === ""){
+      input.style.display = "none"
+      }  
+      else{
+        input.style.display = "flex"}
     }
    }
 
