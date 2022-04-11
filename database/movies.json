@@ -3,18 +3,117 @@
         "title": "The Avengers",
         "available": "5",
         "price": "2€",
-        "movieID": "12345" 
+        "movieID": "12345",
+        "cover": "https://pbs.twimg.com/media/EbjpmZVX0AAYm-H?format=jpg&name=4096x4096",
+        "image": "https://aisvip-a.akamaihd.net/masters/1058175/2558x1439/avengers-endgame-diese-fragen-sind-noch-offen.jpg",
+        "genre": "action" 
     },
     {
         "title": "Matrix",
         "available": "7",
         "price": "2€",
-        "movieID": "23456"
+        "movieID": "23456",
+        "cover": "https://static.posters.cz/image/1300/poster/matrix-hacker-i104636.jpg",
+        "image": "https://cdn.pocket-lint.com/r/s/1200x630/assets/images/155659-tv-news-feature-what-is-the-best-order-to-watch-the-matrix-movies-image6-n4msmyjaxw.jpg",
+        "genre": "scifi" 
     },
     {
         "title": "Enter The Void",
         "available": "3",
         "price": "2€",
-        "movieID": "34567"
+        "movieID": "34567",
+        "cover": "https://i.pinimg.com/originals/79/e8/60/79e86027175b4427deae885173368b54.jpg",
+        "image": "https://www.tagesspiegel.de/images/enter-the-void/1910828/3-format43.jpg",
+        "genre": "arthouse" 
+    },
+    {
+        "title": "Memento",
+        "available": "4",
+        "price": "2€",
+        "movieID": "45678",
+        "cover": "https://m.media-amazon.com/images/I/9162xNqGTCL._AC_SL1500_.jpg",
+        "image": "https://i0.wp.com/comic.highlightzone.de/wp-content/uploads/2020/08/Memento-3.jpg",
+        "genre": "krimi" 
+    },
+    {
+        "title": "Angel has Fallen",
+        "available": "15",
+        "price": "2€",
+        "movieID": "56789",
+        "cover": "https://static.kino.de/wp-content/uploads/2018/01/Angel-has-Fallen-Poster-2019.jpg",
+        "image": "https://film-authority.com/wp-content/uploads/2021/09/16-9.jpg",
+        "genre": "action" 
+    },
+    {
+        "title": "Triple X",
+        "available": "3",
+        "price": "2€",
+        "movieID": "54321",
+        "cover": "https://m.media-amazon.com/images/I/91KoVM3O6sL._SL1500_.jpg",
+        "image": "https://s2.dmcdn.net/v/SeGXz1Vq7H_p0GdW_/x1080",
+        "genre": "action" 
+    },
+    {
+        "title": "The Expendables",
+        "available": "9",
+        "price": "2€",
+        "movieID": "98765",
+        "cover": "https://m.media-amazon.com/images/I/91zSOPqtunL._SL1500_.jpg",
+        "image": "https://crops.giga.de/be/47/08/913358fc5653fc508873c0cfdd_YyAxMzYzeDc2NysxMCsxOTICcmUgMTkyMCAxMDgwA2I3OTNmNmYwNzBk.jpg",
+        "genre": "action" 
+    },
+    {
+        "title": "Titanic",
+        "available": "2",
+        "price": "2€",
+        "movieID": "87654",
+        "cover": "https://i.etsystatic.com/22518473/r/il/8d0f3c/2712452737/il_570xN.2712452737_hptn.jpg",
+        "image": "https://www.stuttgarter-zeitung.de/media.media.73a443ba-753c-4062-afeb-80ec6f041793.original1024.jpg",
+        "genre": "drama" 
+    },
+    {
+        "title": "Die Verurteilten",
+        "available": "12",
+        "price": "2€",
+        "movieID": "76543",
+        "cover": "https://ae01.alicdn.com/kf/HTB1ickhKpXXXXcnXFXXq6xXFXXX7/Die-Verurteilten-Eiche-Bargeld-Brief-Vintage-Retro-Poster-Dekorative-DIY-Wand-Leinwand-Aufkleber-Poster-Wohnkultur-Geschenk.jpg",
+        "image": "https://www.film-rezensionen.de/wp-content/uploads/2014/12/Die-Verurteilten-Frontpage.jpg",
+        "genre": "drama" 
+    },
+    {
+        "title": "Melancholia",
+        "available": "4",
+        "price": "2€",
+        "movieID": "65432",
+        "cover": "https://m.media-amazon.com/images/M/MV5BMTk4NjM0MjI3MV5BMl5BanBnXkFtZTcwNjcxMDYzNg@@._V1_FMjpg_UX1000_.jpg",
+        "image": "https://i1.wp.com/www.thelacanianreviews.com/wp-content/uploads/2020/04/melancholia1_0.jpg?fit=2400%2C1350&ssl=1",
+        "genre": "drama" 
+    },
+    {
+        "title": "Shutter Island",
+        "available": "23",
+        "price": "2€",
+        "movieID": "54321",
+        "cover": "https://m.media-amazon.com/images/I/81FNja+9-iL._SL1500_.jpg",
+        "image": "https://filmkunstkinos.de/wp-content/uploads/2017/09/032.jpg",
+        "genre": "thriller" 
+    },
+    {
+        "title": "Inception",
+        "available": "6",
+        "price": "2€",
+        "movieID": "43210",
+        "cover": "https://media.kinoheld.de/images/film/inception-16929.v27.jpg",
+        "image": "https://a7.com.mx/images/stories/n115/Inception.jpg",
+        "genre": "scifi" 
+    },
+    {
+        "title": "Her",
+        "available": "1",
+        "price": "2€",
+        "movieID": "32109",
+        "cover": "https://flxt.tmsimg.com/assets/p9991186_p_v8_ag.jpg",
+        "image": "https://audio.ventures/wp-content/uploads/2014/04/HER-FP-0873.jpg",
+        "genre": "scifi" 
     }
 ]

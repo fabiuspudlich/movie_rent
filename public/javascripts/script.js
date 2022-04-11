@@ -13,8 +13,46 @@ async function getdata() {
   usersData = response.data.data.users
   createMovieSearch(movieData)
   createUsersSearch(usersData)
+  createSuggestions(movieData)
 })
 }
+
+function createSuggestions(movieData) {
+  let i = movieData
+  let l = i.length
+  let actionNR = 0
+  let dramaNR = 0
+  let scifiNR = 0
+  let action = [document.getElementById("suggestionsTop1"), document.getElementById("suggestionsTop2"), document.getElementById("suggestionsTop3")]
+  let drama = [document.getElementById("suggestionsMiddle1"), document.getElementById("suggestionsMiddle2"), document.getElementById("suggestionsMiddle3")]
+  let scifi = [document.getElementById("suggestionsBottom1"), document.getElementById("suggestionsBottom2"), document.getElementById("suggestionsBottom3")]
+  for(let j=0; j < l; j++){  
+    if(i[j].genre === "action" && actionNR<3 ){
+      let t = Array.prototype.slice.call(action[actionNR].children)
+      let p = document.createElement('p')
+      p.innerHTML = i[j].title
+      t[0].appendChild(p)   
+      action[actionNR].setAttribute("style", 'background-image: url('+i[j].image+');')
+      actionNR++
+    } else if(i[j].genre === "drama" && dramaNR<3 ){
+      let t = Array.prototype.slice.call(drama[dramaNR].children)
+      let p = document.createElement('p')
+      console.log(p)
+      p.innerHTML = i[j].title
+      t[0].appendChild(p)    
+      drama[dramaNR].setAttribute("style", 'background-image: url('+i[j].image+');')
+      dramaNR++
+    } else if(i[j].genre === "scifi" && scifiNR<3 ){ 
+      let t = Array.prototype.slice.call(scifi[scifiNR].children)
+      let p = document.createElement('p')
+      p.innerHTML = i[j].title
+      t[0].appendChild(p) 
+      scifi[scifiNR].setAttribute("style", 'background-image: url('+i[j].image+');')
+      scifiNR++
+    }   
+  }
+}
+
 
 function createMovieSearch(movieData) {
   const searchInput = document.getElementById("navSearch")
@@ -47,12 +85,19 @@ function createMovieSearch(movieData) {
           p.addEventListener('click', function(){
             showWindow()
             undim()
+            hideMovieSuggestíons()
             console.log('KLICK')
             suggestionsPanel.textContent=''
             let i = document.getElementById("inputMovies")
             let wrapper = document.createElement("div")
             wrapper.setAttribute("id", 'div'+divID)
           /*  let div = document.getElementById("div"+divID) */
+              let imageWrapper = document.createElement('div')
+              imageWrapper.classList.add("imageWrapper")
+              imageWrapper.setAttribute("style", 'background-image: url('+suggested.cover+');')
+              i.appendChild(imageWrapper)
+              let img = document.createElement('img')
+              img.src = suggested.cover
               let m = document.createElement("p")
               m.innerHTML = 'Titel: '+suggested.title+' | Verfügbar: '+suggested.available+' | Preis: '+suggested.price
               var b = document.createElement("button")           
@@ -83,12 +128,12 @@ function createMovieSearch(movieData) {
               })
   
             console.log(suggested.title)
-            i.appendChild(wrapper)  
-            wrapper.appendChild(m)
-            wrapper.appendChild(b)
+            i.appendChild(wrapper) 
+          // imageWrapper.appendChild(img) 
+          imageWrapper.appendChild(m)
+          imageWrapper.appendChild(b)
             
-          })
-  
+          })  
           suggestionsPanel.appendChild(p)
       })
       
@@ -238,6 +283,8 @@ function createUsersSearch(usersData) {
    function loadPage(){
      let i = document.getElementById("shoppingKartWrapper")
      i.style.display = "none"
+     let j = document.getElementById("input")
+     j.style.display = "none"
      console.log("reload")
      let a = document.getElementById("ausgeliehen")
      a.style.display = "block" 
@@ -245,6 +292,18 @@ function createUsersSearch(usersData) {
      window.location.reload()
      }
      let timeout = setTimeout(reloadPage, 1700)
+   }
+
+   function hideMovieSuggestíons(){
+     let i = document.getElementById("movieSuggestions")
+     i.style.display = "none"
+   }
+
+   function showMovieSuggestions(){
+    let i = document.getElementById("movieSuggestions")
+    i.style.display = "flex"
+    let j = document.getElementById("input")
+    j.style.display = "none"
    }
    
    dim()
@@ -281,6 +340,7 @@ function createUsersSearch(usersData) {
     let inputMovies = document.getElementById("inputMovies")
     let userInput = document.getElementById("userInput")
     let inputUsers = document.getElementById("inputUsers")
+    let mainpage = document.getElementById("mainpage")
     console.log(inputMovies.innerHTML)
     if(style === 0){
       style = 1
@@ -291,20 +351,23 @@ function createUsersSearch(usersData) {
       s.innerHTML = "Filme"
       suggest.style.display = "none"
       input.style.display = "none"
+      mainpage.style.display = "none"
       if(inputUsers.innerHTML === ""){
         userInput.style.display = "none"
         }  
         else{
           userInput.style.display = "flex"}
       }
+
       else {
       style = 0
-      b.style = "width: 100%; height: 100%; margin-top: 0px; background:linear-gradient(rgba(17, 16, 16, 0.5), rgba(0, 0, 0, 0.5)), url(https://i.imgur.com/jrEFD1z.jpeg); padding-top: 0px; padding-bottom: 0px; margin-left: 0; background-position: center center; background-attachment: fixed; background-size: cover; background-repeat: no-repeat; background-color: rgb(56, 54, 54);"
+      b.style = "width: 100%; height: 100%; margin-top: 0px; background:linear-gradient(rgba(17, 16, 16, 0.5), rgba(0, 0, 0, 0.5)), url(https://wallpaperaccess.com/full/1948913.jpg); padding-top: 0px; padding-bottom: 0px; margin-left: 0; background-position: center center; background-attachment: fixed; background-size: cover; background-repeat: no-repeat; background-color: rgb(56, 54, 54);"
       k.style.display = "block"
       c.style.display = "none"
       m.style.display = "block"
       s.innerHTML = "Kunden"
       userInput.style.display = "none"
+      mainpage.style.display = "flex"
       if(inputMovies.innerHTML === ""){
       input.style.display = "none"
       }  

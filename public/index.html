@@ -12,20 +12,23 @@
   
 </head>
 
-<body style="width: 100%; height: 100%; margin-top: 0px; background:linear-gradient(rgba(17, 16, 16, 0.5), rgba(0, 0, 0, 0.5)), url(https://i.imgur.com/jrEFD1z.jpeg); padding-top: 0px; padding-bottom: 0px; margin-left: 0; background-position: center center; background-attachment: fixed; background-size: cover; background-repeat: no-repeat; background-color: rgb(56, 54, 54);">
+<body style="width: 100%; height: 100%; margin-top: 0px; background:linear-gradient(rgba(17, 16, 16, 0.5), rgba(0, 0, 0, 0.5)), url(https://wallpaperaccess.com/full/1948913.jpg); padding-top: 0px; padding-bottom: 0px; margin-left: 0; background-position: center center; background-attachment: fixed; background-size: cover; background-repeat: no-repeat; background-color: rgb(56, 54, 54);">
   <nav>
-    <div id="logoWrapper">
+    <div id="logoWrapper" onclick="showMovieSuggestions()">
       <img id="logo" src="https://cdn-icons-png.flaticon.com/512/3409/3409602.png">
       <h1>MovieRent</h1>    
   </div>
   <div id="container">  
-    <input type="text" id="navSearch" placeholder="Film suchen" style="display: block;">
-    <input type="text" id="customerSearch" placeholder="Kunden suchen" style="display: none;">
+    <input autocomplete="off" type="text" id="navSearch" placeholder="Film suchen" style="display: block;">
+    <input autocomplete="off" type="text" id="customerSearch" placeholder="Kunden suchen" style="display: none;">
     <div id="suggestions">
     </div>
     <div id="navCustomerSuggestions">
     </div>
   </div>
+    <div id="kartNavWrapper">
+      <img src="https://icon-library.com/images/shopping-cart-icon-white/shopping-cart-icon-white-11.jpg" id="kartNav" onclick="kartView()"></img>
+    </div> 
     <div id="kunde">
       <!-- <p><a href="MovieRent_customer.html">Kunde hinzufügen</a></p> -->
       <p id="styleChange" onclick="changeStyle()">Kunden</p>
@@ -35,22 +38,52 @@
 
   <div id="dim" style="display:none" onclick="undim()"></div>
   
-  <article>    
+  <article> 
+  <div id="mainpage">  
     <div id="input" style="display:none">
       <div id="inputMovies"></div>
+    </div>
+    <div id ="inputSuggestions">
+
+    </div>
+    <!-- Vorgeschlagene Filme -->
+    <div id ="movieSuggestions">
+    <div id="suggestionsWrapper">
+      <p>Action</p>
+      <div id ="suggestionsTop">
+        
+        <div id="suggestionsTop1"><div></div></div>
+        <div id="suggestionsTop2"><div></div></div>
+        <div id="suggestionsTop3"><div></div></div>
+      </div>
+      <p>Drama</p>
+      <div id ="suggestionsMiddle">
+        
+        <div id="suggestionsMiddle1"><div></div></div>
+        <div id="suggestionsMiddle2"><div></div></div>
+        <div id="suggestionsMiddle3"><div></div></div>
+      </div>
+      <p>Science Fiction</p>
+      <div id ="suggestionsBottom">
+        
+        <div id="suggestionsBottom1"><div></div></div>
+        <div id="suggestionsBottom2"><div></div></div>
+        <div id="suggestionsBottom3"><div></div></div>
+      </div>
+    </div>
     </div>
     <div id="userInput" style="display:none">
       <div id="inputUsers"></div>
     </div>
-
+  </div> 
    <div id="ausgeliehen" style="display: none;">
       <p>Filme ausgeliehen!</p>
     </div> 
     <div id="shoppingKartWrapper" style="display: block;">
       <div id="shoppingKart">
-        <form type="button" id="buttonKart" onclick="kartView();"><img src="https://icon-library.com/images/shopping-basket-icon/shopping-basket-icon-18.jpg"></form>
+      <!--  <form type="button" id="buttonKart" onclick="kartView();"><img src="https://icon-library.com/images/shopping-basket-icon/shopping-basket-icon-18.jpg"></form> -->
         <div id="kartSearchWrapper">  
-          <input type="text" id="customerInput" placeholder="Kunde">
+          <input autocomplete="off" type="text" id="customerInput" placeholder="Kunde">
           <div id="customerSuggestions">
             
           </div>

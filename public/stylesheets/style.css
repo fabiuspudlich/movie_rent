@@ -34,7 +34,8 @@ footer{
   margin-bottom: 0px;
   display: flex;
   color: white;
-  display: table;}
+  display: table;
+  z-index: 4;}
 
 footer div{
  display: table-cell;
@@ -89,7 +90,26 @@ h1{font-size: 200%;
   text-decoration: none;
   color: white;}
 
-#kunde{width: 33%;
+  #kartNav{
+    width: auto;
+    height: 40%;
+    cursor: pointer;
+    transition: height 0.2s;
+    margin-left: 220px;
+  }
+
+  #kartNav:hover{
+    height: 50%;
+  }
+
+  #kartNavWrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 18%;}
+
+#kunde{width: 15%;
   margin-right: 50px;
   margin-top: 10px;}
 
@@ -106,7 +126,7 @@ h1{font-size: 200%;
 
   #kunde p{text-decoration: none;
   color: white;
-  transition: font-size 0.5s;}   
+  transition: font-size 0.2s;}   
 
 #dim{
   background-color: black;
@@ -261,20 +281,29 @@ h1{font-size: 200%;
 
 #shoppingKartWrapper{
   position: fixed;
-  height: 500px;
+  height: 100%;
   width: 100%;
-  padding-right: 0px;}
+  padding-right: 0px;
+  z-index: 0;}
 
 #shoppingKart{
   
-  backdrop-filter: blur(20px);
+  background-color: white;
   border-radius: 20px 1px 1px 20px;
   width: 200px;
-  height: 500px;
+  height: 100%;
   float: right;
+  display: flex;
+  flex-direction: column;
+  justify-content: baseline;
+  align-items: stretch;
   margin-right: -200px;
   box-shadow: 0px 5px 8px 3px rgb(0, 0, 0);
   transition: margin-right 1s;}
+
+#shoppingKart form{
+  background-color: blueviolet;
+}
 
 
 #buttonKart{
@@ -299,9 +328,8 @@ h1{font-size: 200%;
   margin-left: 12px;}
 
 #kartSearchWrapper{
-  position: fixed;
   width: 100px;
-  margin-top: -250px;
+  margin-top: 250px;
   padding-left: 27px;}
 
 #customerInput{
@@ -310,7 +338,8 @@ h1{font-size: 200%;
   padding-left: 8px;}
 
 #customerSuggestions{
-  width: 176px;}
+  width: 176px;
+  position: fixed;}
 
 #customerSuggestions p{
   color: grey;
@@ -326,19 +355,21 @@ h1{font-size: 200%;
   margin-bottom: 0px;}
 
 #setCustomer{
+  background-color: rgb(207, 130, 15);
   font-size: 12px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  color: rgb(255, 255, 255);
+  color: rgb(100, 98, 98);
   width: 180px;
   height: 20px;
-  margin-top: -200px;
+  margin-top: 200px;
   margin-left: 30px;}
 
 #setMovies{
+  background-color: aqua;
   width: 176px;
   margin-left: auto;
   margin-right: auto;
-  height: 310px;
+  height: 800px;
   max-height: 310px;
   overflow: auto;
   overflow-x: hidden;}
@@ -352,8 +383,9 @@ h1{font-size: 200%;
   padding-left: 20px;}
 
 #checkout{
+  background-color: rgb(25, 175, 63);
   position: fixed;
-  margin-top: 5px;
+  margin-bottom: 0px;
   margin-left: 60px;
   cursor: pointer;
 }  
@@ -380,45 +412,82 @@ h1{font-size: 200%;
 
   /*--------------------------------- Filme Suchergebnisse ----------------------------------------------*/
 
+
 #input{
-  backdrop-filter: blur(10px);
-  width: 500px;
+ /* backdrop-filter: blur(10px); */
+  width: 800px;
   min-height: 100px;
   max-height: 600px;
-  padding-top: 20px;
-  padding-bottom: 20px;
   position: relative;
-  margin: auto;      
-  border-radius: 25px; 
+  margin: auto; 
+  margin-top: 200px; 
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
   box-shadow: 0px 5px 8px 3px rgb(0, 0, 0);
-  z-index: 1;}
+  z-index: 1;
+  overflow-y: auto;
+  overflow-x: hidden;}
 
 #inputMovies{
-  width: 90%;
-  max-height: 350px;
-  overflow-y: auto;
-  overflow-x: hidden;
-  border-radius: 5px;}
-
-#inputMovies div{
   width: 100%;
-  height: 50px;
-  background-color: rgb(255, 255, 255);} 
+  height: 100%;
+  margin: auto;
+  border-radius: 5px;
+  box-shadow: 1px 5px 8px 3px rgb(185, 185, 185);}
+
+/* #inputMovies div{
+  width: 100%;
+  margin: auto;
+  float: left;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  background-color: rgb(255, 255, 255);} */
 
 #input div p{
-  color: grey;
-  font-size: 14px;
+  color: rgb(255, 255, 255);
+  font-size: 20px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  padding-left: 20px;
-  float: left;}
+  text-align: left;
+  vertical-align: middle;
+  margin: auto;}
+
+.imageWrapper{
+
+  float: left;
+  height: 120px;
+  width: 100%;
+  display: flex;
+  transition: background-size 1s ease-in-out;
+  background-position: center -290px; 
+  background-size: 100%; 
+  background-repeat: no-repeat;
+  }
+
+  .imageWrapper:hover{
+  
+  background-size: 110% auto;
+  }
+
+/* #input div img{
+    height: 40px;
+    width: auto;
+    vertical-align: middle;
+    transition: transform .2s;
+    z-index: 3;
+    margin: auto;}
+
+  #input div img:hover{
+    transform: scale(2.2);
+    width: auto;
+    vertical-align: middle;
+    box-shadow: 0px 5px 8px 3px rgb(46, 45, 45);} */
 
 #input div button{
   float: right;
-  margin-right: 40px;
-  margin-top: 15px;}
+  vertical-align: middle;
+  margin: auto;}
 
 #input div button:hover{
   cursor: pointer;}
@@ -455,3 +524,95 @@ h1{font-size: 200%;
   padding-top: 30px;
   height: 50px;
   background-color: rgb(255, 255, 255);}
+
+  /*  Vorschläge Filme */
+
+  #mainpage{
+    width: 1200px;
+    height: 90%;
+    margin-top: 100px;
+  /*  backdrop-filter: blur(10px); */
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 1;
+    display: flex;
+  }  
+
+#movieSuggestions{
+  position: relative;
+/*   background-color: blue; */
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  }
+
+ #suggestionsWrapper{
+ /*  background-color: rgb(235, 235, 10); */
+   width: 100%;
+   height: 800px;
+   vertical-align: middle;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+ } 
+
+#suggestionsWrapper > div{
+/*  background-color: blueviolet; */
+  height: 30%;
+  width: 100%;
+  vertical-align: middle;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around; 
+}
+
+#suggestionsWrapper > p{
+  color: white;
+  font-size: 20px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin-left: 40px;
+  margin-bottom: 5px;
+}
+
+#suggestionsWrapper > div div{
+  height: auto;
+  width: 33%;
+  background-position: center -15px; 
+  background-size: 130%; 
+  background-repeat: no-repeat;
+  transition: background-size 0.5s ease-in-out;
+  cursor: pointer;
+  color: white;
+  font-size: 24px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bold;
+  text-align: center;
+  display: flex;
+
+}
+#suggestionsWrapper > div div:hover{
+  background-size: 140%; 
+}
+
+#suggestionsWrapper > div div div{
+  height: 100%;
+  width: 100%;
+  background-color: black;
+  opacity: 0.7;
+  position: relative;
+  margin-top: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#suggestionsWrapper > div div div p{
+  font-size: 24px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bold;
+  text-align: center;
+  opacity: .6;}
