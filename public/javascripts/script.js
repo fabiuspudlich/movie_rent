@@ -83,18 +83,21 @@ function createMovieSearch(movieData) {
           p.innerHTML = suggested.title}
   
           p.addEventListener('click', function(){
+            let s = document.getElementById("inputSuggestion")
+            s.innerHTML = ''
             showWindow()
             undim()
             hideMovieSuggestíons()
+            showMainResults()
             console.log('KLICK')
             suggestionsPanel.textContent=''
-            let i = document.getElementById("inputMovies")
+            let i = document.getElementById("inputSuggestion")
             let wrapper = document.createElement("div")
             wrapper.setAttribute("id", 'div'+divID)
           /*  let div = document.getElementById("div"+divID) */
               let imageWrapper = document.createElement('div')
-              imageWrapper.classList.add("imageWrapper")
-              imageWrapper.setAttribute("style", 'background-image: url('+suggested.cover+');')
+              imageWrapper.setAttribute("id", 'imageWrapper')
+              imageWrapper.setAttribute("style", 'background-image: url('+suggested.image+');')
               i.appendChild(imageWrapper)
               let img = document.createElement('img')
               img.src = suggested.cover
@@ -243,14 +246,14 @@ function createUsersSearch(usersData) {
    function kartView(){
      let k = document.getElementById("shoppingKart")
      if (k.style.marginRight === "0px"){
-       k.style.marginRight = "-200px"
+       k.style.marginRight = "-220px"
      } else {
       k.style.marginRight = "-0px"
      }
    }
 
    function showWindow(){
-     let movieWindow = document.getElementById("input")
+     let movieWindow = document.getElementById("inputSuggestion")
      if(movieWindow.style.display === "none"){
       movieWindow.style.display = "flex"
      }
@@ -283,7 +286,7 @@ function createUsersSearch(usersData) {
    function loadPage(){
      let i = document.getElementById("shoppingKartWrapper")
      i.style.display = "none"
-     let j = document.getElementById("input")
+     let j = document.getElementById("mainResults")
      j.style.display = "none"
      console.log("reload")
      let a = document.getElementById("ausgeliehen")
@@ -297,13 +300,20 @@ function createUsersSearch(usersData) {
    function hideMovieSuggestíons(){
      let i = document.getElementById("movieSuggestions")
      i.style.display = "none"
+     let j = document.getElementById("mainpage")
+     j.style.display = "none"
    }
 
    function showMovieSuggestions(){
     let i = document.getElementById("movieSuggestions")
     i.style.display = "flex"
-    let j = document.getElementById("input")
+    let j = document.getElementById("mainResults")
     j.style.display = "none"
+   }
+
+   function showMainResults(){
+     let i = document.getElementById("mainResults")
+     i.style.display= "flex"
    }
    
    dim()
@@ -336,8 +346,8 @@ function createUsersSearch(usersData) {
     let c = document.getElementById("customerSearch")
     let s = document.getElementById("styleChange")
     let suggest = document.getElementById("suggestions")
-    let input = document.getElementById("input")
-    let inputMovies = document.getElementById("inputMovies")
+    let input = document.getElementById("inputSuggestionsWrapper")
+    let inputMovies = document.getElementById("inputSuggestion")
     let userInput = document.getElementById("userInput")
     let inputUsers = document.getElementById("inputUsers")
     let mainpage = document.getElementById("mainpage")
