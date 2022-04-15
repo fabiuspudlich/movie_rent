@@ -70,7 +70,7 @@ h1{font-size: 200%;
   text-align: center;
   display: flex;
   width: 50%;color: white;
-  cursor:default;} 
+  cursor: pointer;} 
 
 #logoWrapper{
   height: 100%;
@@ -84,11 +84,13 @@ h1{font-size: 200%;
 #logo{
   height: 50%;
   width: auto;
-  margin-top: 15px;}    
+  margin-top: 15px;
+  cursor: pointer;}    
   
 #logoWrapper:hover{
   text-decoration: none;
-  color: white;}
+  color: white;
+  cursor: pointer;}
 
   #kartNav{
     width: auto;
@@ -654,7 +656,7 @@ h1{font-size: 200%;
  }
 
  #inputSuggestion{
-   height: 300px;
+   height: 200px;
    width: 100%;
    display: flex;
    flex-direction: row;
@@ -674,14 +676,16 @@ h1{font-size: 200%;
 
  #imageWrapper{
   width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
   transition: background-size 1s ease-in-out;
-  background-position: center -290px; 
+  background-position: center -70px; 
   background-size: 100%; 
   background-repeat: no-repeat;
+  overflow: hidden;
   }
 
   #imageWrapper:hover{
@@ -689,10 +693,37 @@ h1{font-size: 200%;
   background-size: 110% auto;
   }
 
+  #imageWrapper > p{
+    font-size: 24px;
+    color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+
  #suggestionsResults{
    height: 300px;
    width: 100%;
    display: flex;
+   flex-direction: row;
+   justify-content:space-between;
+   align-items: center;
+ }
+
+ #suggestionsResults > ul{
+  list-style-type: none;
+   height: 300px;
+   width: 30%;
+   margin-top: 80px;
+   background-color: rgb(68, 68, 68);
+   display: flex;
+   justify-content: center;
+   align-items: center;
+ }
+
+ #suggestionsResults > ul > li{
+  text-decoration:  none;
+  font-size: 24px;
+  color: white;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
  }
 
  #imageWrapper > button{
@@ -701,5 +732,6 @@ h1{font-size: 200%;
    font-family: Verdana, Geneva, Tahoma, sans-serif;
    height: 50px;
    width: 50px;
+   cursor: pointer;
  }
 

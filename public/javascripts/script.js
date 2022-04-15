@@ -2,6 +2,9 @@ let movieData = null
 let customerData = null
 var outputArray = []
 var outputForm = []
+var inputCounter = 0
+var panelArray = []
+var genreArray = []
 
 async function getdata() {
   // Make a request for a user with a given ID
@@ -16,6 +19,8 @@ async function getdata() {
   createSuggestions(movieData)
 })
 }
+
+
 
 function createSuggestions(movieData) {
   let i = movieData
@@ -37,7 +42,6 @@ function createSuggestions(movieData) {
     } else if(i[j].genre === "drama" && dramaNR<3 ){
       let t = Array.prototype.slice.call(drama[dramaNR].children)
       let p = document.createElement('p')
-      console.log(p)
       p.innerHTML = i[j].title
       t[0].appendChild(p)    
       drama[dramaNR].setAttribute("style", 'background-image: url('+i[j].image+');')
@@ -49,8 +53,84 @@ function createSuggestions(movieData) {
       t[0].appendChild(p) 
       scifi[scifiNR].setAttribute("style", 'background-image: url('+i[j].image+');')
       scifiNR++
-    }   
+    }
+      
   }
+}
+
+
+
+function createInputSuggestions(suggested, movieData, inputCounter, panelArray, genreArray){
+      let s = suggested
+   //   let m = movieData
+   //   let l = m.length
+      panelArray.push(suggested.title)
+      let panelContentOne = 0
+      let panelContentTwo = 1
+      let panelContentThree = 2
+      let suggestionPanels = [document.getElementById("suggestionsResults1"), document.getElementById("suggestionsResults2"), document.getElementById("suggestionsResults3")]
+
+
+      if(inputCounter>1){
+        suggestionPanels[0].removeChild(suggestionPanels[0].firstElementChild)
+        suggestionPanels[1].removeChild(suggestionPanels[1].firstElementChild)
+        suggestionPanels[2].removeChild(suggestionPanels[2].firstElementChild)
+      }
+      if(inputCounter <4 ){
+        
+        let p1 = document.createElement('li')
+        let p2 = document.createElement('li')
+        let p3 = document.createElement('li')
+
+      let i = movieData
+      let l = movieData.length
+      let inputGenreNR = 0
+      for(let j=0; j < l; j++){
+      if(i[j].genre === suggested.genre && inputGenreNR < 3 ){ 
+        
+          console.log("SUGGESTED GENRE"+i[j].genre)
+          
+
+          inputGenreNR++
+          console.log(inputGenreNR)
+        //  var genreArray = []
+        if(suggested.title != i[j].title){
+          let g = []
+          g = i[j]
+          let myObj = JSON.parse(g)
+          console.log(myObj)
+          genreArray.unshift(g)
+        } else{inputGenreNR--}
+        
+          console.log(genreArray)
+          console.log(genreArray[0])
+          console.log(genreArray[1])
+          console.log(genreArray[2])
+
+          p1.innerHTML = genreArray[0]
+          p2.innerHTML = genreArray[1]
+          p3.innerHTML = genreArray[2]
+      }
+        suggestionPanels[panelContentOne].appendChild(p1)
+    //    console.log(suggestionPanels[panelContentOne])
+        suggestionPanels[panelContentTwo].appendChild(p2)
+        suggestionPanels[panelContentThree].appendChild(p3)
+        
+      }
+    }
+      if(inputCounter >3 ){
+        let p1 = document.createElement('li')
+        let p2 = document.createElement('li')
+        let p3 = document.createElement('li')
+        p1.innerHTML = panelArray[panelArray.length-2]
+        p2.innerHTML = panelArray[panelArray.length-3]
+        p3.innerHTML = panelArray[panelArray.length-4]
+        suggestionPanels[panelContentOne].appendChild(p1)
+        suggestionPanels[panelContentTwo].appendChild(p2)
+        suggestionPanels[panelContentThree].appendChild(p3)
+      }
+        console.log(panelArray) 
+
 }
 
 
@@ -83,6 +163,8 @@ function createMovieSearch(movieData) {
           p.innerHTML = suggested.title}
   
           p.addEventListener('click', function(){
+            inputCounter++
+            createInputSuggestions(suggested, movieData, inputCounter, panelArray, genreArray)
             let s = document.getElementById("inputSuggestion")
             s.innerHTML = ''
             showWindow()
@@ -97,13 +179,15 @@ function createMovieSearch(movieData) {
           /*  let div = document.getElementById("div"+divID) */
               let imageWrapper = document.createElement('div')
               imageWrapper.setAttribute("id", 'imageWrapper')
-              imageWrapper.setAttribute("style", 'background-image: url('+suggested.image+');')
+              let inputSuggestion = document.getElementById("inputSuggestion")
+              inputSuggestion.setAttribute("style", 'background-image: url('+suggested.image+');')
               i.appendChild(imageWrapper)
               let img = document.createElement('img')
               img.src = suggested.cover
               let m = document.createElement("p")
               m.innerHTML = 'Titel: '+suggested.title+' | Verfügbar: '+suggested.available+' | Preis: '+suggested.price
-              var b = document.createElement("button")           
+              var b = document.createElement("button")   
+              b.setAttribute("cursor", 'pointer')        
               b.innerHTML = '+'
   
               b.addEventListener('click', function(){
@@ -229,8 +313,7 @@ function createUsersSearch(usersData) {
 
     function removeMovie(val) {  
               let r = document.getElementById('movieDiv'+val)
-              console.log("Value: "+val)
-            
+              console.log("Value: "+val)           
               outputForm.splice(val-1, 1, "")
               console.log("outputForm: "+outputForm)          
               r.remove()
@@ -309,6 +392,8 @@ function createUsersSearch(usersData) {
     i.style.display = "flex"
     let j = document.getElementById("mainResults")
     j.style.display = "none"
+    let k = document.getElementById("mainpage")
+    k.style.display = "flex"
    }
 
    function showMainResults(){
@@ -351,6 +436,7 @@ function createUsersSearch(usersData) {
     let userInput = document.getElementById("userInput")
     let inputUsers = document.getElementById("inputUsers")
     let mainpage = document.getElementById("mainpage")
+    let logoWrapper = document.getElementById("logoWrapper")
     console.log(inputMovies.innerHTML)
     if(style === 0){
       style = 1
@@ -359,6 +445,9 @@ function createUsersSearch(usersData) {
       c.style.display = "block"
       m.style.display = "none"
       s.innerHTML = "Filme"
+      if(s.innerHTML === "Filme"){
+        logoWrapper.setAttribute("onclick", '')
+      }
       suggest.style.display = "none"
       input.style.display = "none"
       mainpage.style.display = "none"
@@ -376,8 +465,11 @@ function createUsersSearch(usersData) {
       c.style.display = "none"
       m.style.display = "block"
       s.innerHTML = "Kunden"
+      if(s.innerHTML === "Kunden"){
+        logoWrapper.setAttribute("onclick", 'showMovieSuggestions()')
+      }
       userInput.style.display = "none"
-      mainpage.style.display = "flex"
+     // mainpage.style.display = "flex"
       if(inputMovies.innerHTML === ""){
       input.style.display = "none"
       }  
