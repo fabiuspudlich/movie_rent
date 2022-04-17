@@ -20,6 +20,7 @@ body{width: 100%;
   background-repeat: no-repeat; 
   background-color: rgb(56, 54, 54);}  */
 
+
 article{
   height: 95%;
   display: flex;
@@ -290,7 +291,7 @@ h1{font-size: 200%;
 
 #shoppingKart{
   
-  background-color: white;
+  background-color: rgb(51, 50, 50);
   width: 220px;
   height: 100%;
   float: right;
@@ -349,7 +350,7 @@ h1{font-size: 200%;
   position: fixed;}
 
 #customerSuggestions p{
-  color: grey;
+  color: rgb(255, 255, 255);
   height: 20px;
   width: 130px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -642,9 +643,10 @@ h1{font-size: 200%;
   display: none;
  }
 
-  #inputSuggestionsWrapper{
+#inputSuggestionsWrapper{
     width: 100%;
     height: 800px;
+    margin-top: 17px;
     vertical-align: middle;
     display: flex;
     flex-direction: column;
@@ -656,23 +658,20 @@ h1{font-size: 200%;
  }
 
  #inputSuggestion{
-   height: 200px;
+   height: 400px;
    width: 100%;
    display: flex;
    flex-direction: row;
+   background-size: 140%;
+   background-position: center center;
+   transition: background-size 3s ease-in-out;
  }
-/*
- .imageWrapper{
-   height: 100%;
-   width: 100%;
-   display: flex;
-   flex-direction: row;
-   justify-items: space-around;
-   align-items: center;
-   color: white;
-   font-family: Verdana, Geneva, Tahoma, sans-serif;
-   font-size: 26px;
- }   */
+
+ #inputSuggestion:hover{
+   background-size: 150%;
+ }
+
+ 
 
  #imageWrapper{
   width: 100%;
@@ -694,9 +693,14 @@ h1{font-size: 200%;
   }
 
   #imageWrapper > p{
-    font-size: 24px;
+    font-size: 30px;
+    font-weight: bold;
     color: white;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+
+  #imageWrapper > p:hover{
+    cursor: default;
   }
 
  #suggestionsResults{
@@ -709,21 +713,39 @@ h1{font-size: 200%;
  }
 
  #suggestionsResults > ul{
-  list-style-type: none;
-   height: 300px;
+   padding: 0px;
+   list-style-type: none;
+   height: 270px;
    width: 30%;
    margin-top: 80px;
-   background-color: rgb(68, 68, 68);
    display: flex;
    justify-content: center;
    align-items: center;
+   transition: background-size 1s ease-in-out;
+   background-size: 165%;
+   background-repeat: no-repeat;
+   background-position: center;
+   
  }
 
+ #suggestionsResults > ul:hover{
+  background-size: 180%; 
+  cursor: pointer;
+}
+
  #suggestionsResults > ul > li{
+  opacity: .8;
   text-decoration:  none;
   font-size: 24px;
   color: white;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+  transition: all 1s ease-in-out; 
+  text-align: center;
+  cursor: pointer;
+ }
+
+ #suggestionsResults > ul > li:hover{
+  opacity: 1;
  }
 
  #imageWrapper > button{

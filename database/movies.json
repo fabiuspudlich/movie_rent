@@ -18,6 +18,15 @@
         "genre": "scifi" 
     },
     {
+        "title": "Bladerunner 2049",
+        "available": "2049",
+        "price": "2€",
+        "movieID": "20490",
+        "cover": "https://assets.cdn.moviepilot.de/files/87da875500ee8e9ffec5c10ce1c74a12408f473d0cf92acc48bde65649fd/limit/500/1000/BR_Hauptplakat_RZ_A3+300dpi_A4.jpg",
+        "image": "https://cdn.prod.www.spiegel.de/images/4317195a-0001-0004-0000-000001195323_w1528_r1.5625_fpx43.52_fpy50.jpg",
+        "genre": "scifi" 
+    },
+    {
         "title": "Enter The Void",
         "available": "3",
         "price": "2€",
@@ -27,8 +36,35 @@
         "genre": "arthouse" 
     },
     {
+        "title": "Nymphomaniac",
+        "available": "5",
+        "price": "2€",
+        "movieID": "21098",
+        "cover": "https://de.web.img3.acsta.net/pictures/14/02/21/10/57/215290.jpg",
+        "image": "https://ds.static.rtbf.be/article/image/1920x1080/3/f/2/02f46c7fb174f22bad8eca9e4a350346-1372419382.jpg",
+        "genre": "arthouse" 
+    },
+    {
+        "title": "The Tree Of Life",
+        "available": "16",
+        "price": "2€",
+        "movieID": "10987",
+        "cover": "https://de.web.img3.acsta.net/medias/nmedia/18/84/13/63/19727394.jpg",
+        "image": "https://images.mubicdn.net/images/film/36141/cache-90909-1572967146/image-w1280.jpg",
+        "genre": "arthouse" 
+    },
+    {
+        "title": "Prisoners of the Ghostland",
+        "available": "3",
+        "price": "2€",
+        "movieID": "09876",
+        "cover": "https://de.web.img2.acsta.net/pictures/21/11/17/11/41/2105018.jpg",
+        "image": "https://images.squarespace-cdn.com/content/v1/5898c482e58c62ed8ad05b2e/1634232676871-UWHWKW8P3ZDZVVDXSDZH/Prisoners-of-Ghostland-Review-MAGA.jpg?format=2500w",
+        "genre": "arthouse" 
+    },
+    {
         "title": "Memento",
-        "available": "4",
+        "available": "0",
         "price": "2€",
         "movieID": "45678",
         "cover": "https://m.media-amazon.com/images/I/9162xNqGTCL._AC_SL1500_.jpg",
