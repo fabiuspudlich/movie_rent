@@ -2,14 +2,16 @@ var express = require('express');
 var router = express.Router();
 fs = require('fs');
 
-/* index.html an den Browser senden */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
 let data = {
   movies: null,
   users: null
 }
+
+/* index.html an den Browser senden */
+router.get('/', function(req, res, next) {
+  res.render('index', { title: 'Express' });
+});
+
 router.get('/get_data', (req, res, next) => {
   //  get users
   getUsers(function (cb) {
@@ -47,5 +49,20 @@ router.post('/save_movies', function(req, res, next) {
   console.log(req.body)
   res.json('erfolgreich');
 });
+
+router.get('/create_customer', (req, res, next) => {
+  createCustomer(function (cb) {
+    data.movies = cb.movies
+    res.json({data: data});
+  });
+});
+
+var getMovies = function(cb) { 
+  // movies.json Datei lesen
+  fs.readFile('database/movies.json', 'utf8', function(err, movies) {
+    if (err) { return console.log(err) };
+    cb({movies: JSON.parse(movies)});
+  });
+}
 
 module.exports = router;
