@@ -13,7 +13,7 @@ var customerOutputArray = []
 var tableTitle = ""
 
 async function getdata() {
-  // Make a request for a user with a given ID
+  console.log("getting data...")
   axios.get('/get_data')
   .then(function (response) {
   // handle success
