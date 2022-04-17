@@ -131,14 +131,14 @@ h1{font-size: 200%;
 
 #showCustomerInterface{
   width: auto;
-  height: 50%;
+  height: 40%;
   cursor: pointer;
   float: right;
   transition: height 0.2s;
 }
 
 #showCustomerInterface:hover{
-  height: 60%;
+  height: 50%;
 }
 
 #kunde{width: 10%;

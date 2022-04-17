@@ -43,6 +43,8 @@ function createSuggestions(movieData) {
       let t = Array.prototype.slice.call(action[actionNR].children)
       let p = document.createElement('p')
       p.innerHTML = i[j].title
+      let title = i[j].title
+      action[actionNR].addEventListener("click", function(){movieSuggestionSearch(title), stateTwo()})
       t[0].appendChild(p)   
       action[actionNR].setAttribute("style", 'background-image: url('+i[j].image+');')
       actionNR++
@@ -50,6 +52,8 @@ function createSuggestions(movieData) {
       let t = Array.prototype.slice.call(drama[dramaNR].children)
       let p = document.createElement('p')
       p.innerHTML = i[j].title
+      let title = i[j].title
+      drama[dramaNR].addEventListener("click", function(){movieSuggestionSearch(title), stateTwo()})
       t[0].appendChild(p)    
       drama[dramaNR].setAttribute("style", 'background-image: url('+i[j].image+');')
       dramaNR++
@@ -57,6 +61,8 @@ function createSuggestions(movieData) {
       let t = Array.prototype.slice.call(scifi[scifiNR].children)
       let p = document.createElement('p')
       p.innerHTML = i[j].title
+      let title = i[j].title
+      scifi[scifiNR].addEventListener("click", function(){movieSuggestionSearch(title), stateTwo()})
       t[0].appendChild(p) 
       scifi[scifiNR].setAttribute("style", 'background-image: url('+i[j].image+');')
       scifiNR++
@@ -586,9 +592,16 @@ function createUsersSearch(usersData) {
    function hideMovieSuggestions(){
      let i = document.getElementById("movieSuggestions")
      i.style.display = "none"
-     let j = document.getElementById("mainpage")
-     j.style.display = "none"
+  //   let j = document.getElementById("mainpage")
+  //   j.style.display = "none"
    }
+
+   function hideCustomerSuggestions(){
+    let i = document.getElementById("navCustomerSuggestions")
+    i.style.display = "none"
+  //  let j = document.getElementById("mainpage")
+  //  j.style.display = "none"
+  }
 
    function showMovieSuggestions(){
     let i = document.getElementById("movieSuggestions")
@@ -642,6 +655,84 @@ function createUsersSearch(usersData) {
     dim.style.display = "none"
     dimNav.style.display= "none"
    }
+
+   // Start Results State
+
+ function stateOne(){
+  let mainpage = document.getElementById("mainpage")
+  mainpage.style.display = "flex"
+  let mainResults = document.getElementById("mainResults")
+  mainResults.style.display = "none"
+  let customerResults = document.getElementById("customerResults")
+  customerResults.style.display = "none"
+  let addCustomerWrapper = document.getElementById("addCustomerWrapper")
+  addCustomerWrapper.style.display = "none"
+  let body = document.body
+  body.style = "width: 100%; height: 100%; margin-top: 0px; background:linear-gradient(rgba(17, 16, 16, 0.5), rgba(0, 0, 0, 0.5)), url(https://duofischbach.ch/wp-content/uploads/2016/05/Movie-Theater-Wallpaper-2016.jpg); padding-top: 0px; padding-bottom: 0px; margin-left: 0; background-position: center center; background-attachment: fixed; background-size: cover; background-repeat: no-repeat; background-color: rgb(56, 54, 54);"
+}
+
+// Movie Results State 
+
+function stateTwo(){
+ let mainpage = document.getElementById("mainpage")
+ mainpage.style.display = "none"
+ let mainResults = document.getElementById("mainResults")
+ mainResults.style.display = "flex"
+ let customerResults = document.getElementById("customerResults")
+ customerResults.style.display = "none"
+ let addCustomerWrapper = document.getElementById("addCustomerWrapper")
+ addCustomerWrapper.style.display = "none"
+ let body = document.body
+ body.style = "width: 100%; height: 100%; margin-top: 0px; background:linear-gradient(rgba(17, 16, 16, 0.5), rgba(0, 0, 0, 0.5)), url(https://duofischbach.ch/wp-content/uploads/2016/05/Movie-Theater-Wallpaper-2016.jpg); padding-top: 0px; padding-bottom: 0px; margin-left: 0; background-position: center center; background-attachment: fixed; background-size: cover; background-repeat: no-repeat; background-color: rgb(56, 54, 54);"
+}
+
+// New Customer State
+
+function stateThree(){
+ let mainpage = document.getElementById("mainpage")
+ mainpage.style.display = "none"
+ let mainResults = document.getElementById("mainResults")
+ mainResults.style.display = "none"
+ let customerResults = document.getElementById("customerResults")
+ customerResults.style.display = "none"
+ let addCustomerWrapper = document.getElementById("addCustomerWrapper")
+ addCustomerWrapper.style.display = "flex"
+ let body = document.body
+ body.style = "width: 100%; height: 100%; margin-top: 0px; background:linear-gradient(rgba(17, 16, 16, 0.5), rgba(0, 0, 0, 0.5)), url(https://media.timeout.com/images/105306356/image.jpg); padding-top: 0px; padding-bottom: 0px; margin-left: 0; background-position: center center; background-attachment: fixed; background-size: cover; background-repeat: no-repeat; background-color: rgb(56, 54, 54);"
+}
+
+// Customer Results State
+
+function stateFour(){
+let mainpage = document.getElementById("mainpage")
+mainpage.style.display = "none"
+let mainResults = document.getElementById("mainResults")
+mainResults.style.display = "none"
+let customerResults = document.getElementById("customerResults")
+customerResults.style.display = "flex"
+let addCustomerWrapper = document.getElementById("addCustomerWrapper")
+addCustomerWrapper.style.display = "none"
+let body = document.body
+body.style = "width: 100%; height: 100%; margin-top: 0px; background:linear-gradient(rgba(17, 16, 16, 0.5), rgba(0, 0, 0, 0.5)), url(https://media.timeout.com/images/105306356/image.jpg); padding-top: 0px; padding-bottom: 0px; margin-left: 0; background-position: center center; background-attachment: fixed; background-size: cover; background-repeat: no-repeat; background-color: rgb(56, 54, 54);"
+}
+
+// Switch Customer / Moviesearch
+
+function changeStyle(){
+let m = document.getElementById("navSearch")
+let c = document.getElementById("customerSearch")
+let s = document.getElementById("styleChange")
+
+if(s.innerHTML == "Kundensuche"){
+ m.style.display = "none"
+ c.style.display = "block"
+ s.innerHTML = "Filmsuche"
+} else{
+ m.style.display = "block"
+ c.style.display = "none"
+ s.innerHTML = "Kundensuche"
+}
+}
 
    var style = 0
 /*
@@ -723,72 +814,4 @@ function createUsersSearch(usersData) {
      console.log("saveCustomerData")
    }
 
-  // Start Results State
-
- function stateOne(){
-     let mainpage = document.getElementById("mainpage")
-     mainpage.style.display = "flex"
-     let mainResults = document.getElementById("mainResults")
-     mainResults.style.display = "none"
-     let customerResults = document.getElementById("customerResults")
-     customerResults.style.display = "none"
-     let addCustomerWrapper = document.getElementById("addCustomerWrapper")
-     addCustomerWrapper.style.display = "none"
-     let body = document.body
-     body.style = "width: 100%; height: 100%; margin-top: 0px; background:linear-gradient(rgba(17, 16, 16, 0.5), rgba(0, 0, 0, 0.5)), url(https://duofischbach.ch/wp-content/uploads/2016/05/Movie-Theater-Wallpaper-2016.jpg); padding-top: 0px; padding-bottom: 0px; margin-left: 0; background-position: center center; background-attachment: fixed; background-size: cover; background-repeat: no-repeat; background-color: rgb(56, 54, 54);"
-   }
-
-  // Movie Results State 
-
-function stateTwo(){
-    let mainpage = document.getElementById("mainpage")
-    mainpage.style.display = "none"
-    let mainResults = document.getElementById("mainResults")
-    mainResults.style.display = "flex"
-    let customerResults = document.getElementById("customerResults")
-    customerResults.style.display = "none"
-    let addCustomerWrapper = document.getElementById("addCustomerWrapper")
-    addCustomerWrapper.style.display = "none"
-    let body = document.body
-    body.style = "width: 100%; height: 100%; margin-top: 0px; background:linear-gradient(rgba(17, 16, 16, 0.5), rgba(0, 0, 0, 0.5)), url(https://duofischbach.ch/wp-content/uploads/2016/05/Movie-Theater-Wallpaper-2016.jpg); padding-top: 0px; padding-bottom: 0px; margin-left: 0; background-position: center center; background-attachment: fixed; background-size: cover; background-repeat: no-repeat; background-color: rgb(56, 54, 54);"
-  }
-
-// New Customer State
-
-function stateThree(){
-    let mainpage = document.getElementById("mainpage")
-    mainpage.style.display = "none"
-    let mainResults = document.getElementById("mainResults")
-    mainResults.style.display = "none"
-    let customerResults = document.getElementById("customerResults")
-    customerResults.style.display = "none"
-    let addCustomerWrapper = document.getElementById("addCustomerWrapper")
-    addCustomerWrapper.style.display = "flex"
-    let body = document.body
-    body.style = "width: 100%; height: 100%; margin-top: 0px; background:linear-gradient(rgba(17, 16, 16, 0.5), rgba(0, 0, 0, 0.5)), url(https://media.timeout.com/images/105306356/image.jpg); padding-top: 0px; padding-bottom: 0px; margin-left: 0; background-position: center center; background-attachment: fixed; background-size: cover; background-repeat: no-repeat; background-color: rgb(56, 54, 54);"
-  }
-
-// Customer Results State
-
-function stateFour(){
-  let mainpage = document.getElementById("mainpage")
-  mainpage.style.display = "none"
-  let mainResults = document.getElementById("mainResults")
-  mainResults.style.display = "none"
-  let customerResults = document.getElementById("customerResults")
-  customerResults.style.display = "flex"
-  let addCustomerWrapper = document.getElementById("addCustomerWrapper")
-  addCustomerWrapper.style.display = "none"
-  let body = document.body
-  body.style = "width: 100%; height: 100%; margin-top: 0px; background:linear-gradient(rgba(17, 16, 16, 0.5), rgba(0, 0, 0, 0.5)), url(https://media.timeout.com/images/105306356/image.jpg); padding-top: 0px; padding-bottom: 0px; margin-left: 0; background-position: center center; background-attachment: fixed; background-size: cover; background-repeat: no-repeat; background-color: rgb(56, 54, 54);"
-}
-
-function changeStyle(){
-  let m = document.getElementById("navSearch")
-  let c = document.getElementById("customerSearch")
-  let s = document.getElementById("styleChange")
-
-  if(s.innerHTML == Kundensuche){
-    
-  }
-}
+  
