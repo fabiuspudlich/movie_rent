@@ -26,8 +26,13 @@
     <div id="navCustomerSuggestions">
     </div>
   </div>
+   <div id="addCustomer">
+     <div id="customerNavWrapper">
+     <img src="https://www.pngkey.com/png/full/286-2861054_new-account-white-icon-person-with-plus-sign.png" id="showCustomerInterface" onclick="showCustomerCreator()">
+    </div>
+   </div>
     <div id="kartNavWrapper">
-      <img src="https://icon-library.com/images/shopping-cart-icon-white/shopping-cart-icon-white-11.jpg" id="kartNav" onclick="kartView()"></img>
+      <img src="https://www.clipartmax.com/png/full/16-164981_shopping-cart-icon-vector-white.png" id="kartNav" onclick="kartView()">
     </div> 
     <div id="kunde">
       <!-- <p><a href="MovieRent_customer.html">Kunde hinzufügen</a></p> -->
@@ -90,7 +95,8 @@
  </div>
  <div id="customerResults" display="none">
    <div id="customerWrapper">
-     <p id="customerInfo"></p>
+     <p id="customerInfo">Kundeninfo</p>
+     <div id="tableWrapper">
      <table id="customerMovies">
        <tr>
         <th>Filme</th>
@@ -98,14 +104,20 @@
         <th>Ausleihdatum</th>
         <th>Rückgabe</th>
        </tr>
-       <tr>
-         <td></td>
-         <td></td>
-         <td></td>
-         <td></td>
-       </tr>
      </table>
+    </div>
+     
    </div>
+   <button id="movieReturn" onclick="saveCustomerData()">Rückgabe</button>
+ </div>
+ <div id="addCustomerWrapper">
+   <form id="customerTextInput">
+     <p>Neuen Kunden anlegen:</p>
+     <input type="text" id="customerForename" placeholder="Vorname">
+     <input type="text" id="customerSurename" placeholder="Nachname">
+     <button id="createNewCustomer">Fertig</button>
+   </form>
+   
  </div>
    <div id="ausgeliehen" style="display: none;">
       <p>Filme ausgeliehen!</p>

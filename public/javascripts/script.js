@@ -12,6 +12,7 @@ var tableID = 0
 var customerOutputArray = []
 var tableTitle = ""
 
+
 async function getdata() {
   // Make a request for a user with a given ID
   axios.get('/get_data')
@@ -331,20 +332,64 @@ function createSuggestionMovieSearch(movieData){
    }
 } */
 
-function createCustomerResults(suggested){
-  console.log("createCustomerResults")
+function fillCustomerOutputArray(suggested, newID){
+  console.log(newID)
   console.log(suggested)
-  console.log
+  customerOutputArray[newID] = suggested.rentedMovies[newID]
+  console.log(customerOutputArray)
+}
+
+function unfillCustomerOutputArray(newID){
+  console.log(newID)
+  customerOutputArray[newID] = null
+  console.log(customerOutputArray)
+}
+
+function wipeList(){
+  console.log("wipeList")
+  let i = document.getElementById("customerMovies")
+  console.log(i)
+  while(i.hasChildNodes()){
+    i.removeChild(i.firstChild);
+
+  }
+}
+
+function createCustomerResults(suggested){
+  wipeList()
+
+  tableID = 0
+  customerOutputArray = []
   let customerInfo = document.getElementById("customerInfo")
   customerInfo.innerHTML = suggested.forename + ' ' + suggested.surname + ' ' + suggested.cNumber
+ 
+  let returnArray = []
+
+  console.log("suggested.rentedMovies.length"+suggested.rentedMovies.length)
   let table = document.getElementById("customerMovies")
+
+  let th1 = document.createElement("th")
+  th1.innerHTML = "Filme"
+  let th2 = document.createElement("th")
+  th2.innerHTML = "ID"
+  let th3 = document.createElement("th")
+  th3.innerHTML = "Ausleihdatum"
+  let th4 = document.createElement("th")
+  th4.innerHTML = "Rückgabe"
+
+  table.appendChild(th1)
+  table.appendChild(th2)
+  table.appendChild(th3)
+  table.appendChild(th4)
+
+  for(let i=0; i < suggested.rentedMovies.length; i++){    
+    console.log(suggested.rentedMovies.length)
+    console.log("Kunden Filme Schleife")
+  
   let newTableRow = document.createElement('tr')
-  newTableRow.setAttribute("id", 'tableRow'+tableID)
-    let newtd1 = document.createElement("td")
-    
-    for(i=0; i<movieData.length; i++){
-    console.log(movieData[i].movieID)
-    console.log(suggested.rentedMovies[tableID])
+    newTableRow.setAttribute("id", 'tableRow'+tableID)
+  let newtd1 = document.createElement("td")    
+    for(let i=0; i<movieData.length; i++){
       if(movieData[i].movieID == suggested.rentedMovies[tableID]){
         tableTitle = movieData[i].title               
       }
@@ -356,14 +401,32 @@ function createCustomerResults(suggested){
     newtd3.innerHTML = suggested.rentTime
     let newtd4 = document.createElement("input")
     newtd4.setAttribute("type", 'checkbox')
+    newtd4.setAttribute("id", 'checkbox'+tableID)
+    const newID = tableID
+    newtd4.addEventListener('change', function(){
+      if(this.checked){        
+        fillCustomerOutputArray(suggested, newID)
+        console.log("CHECKED"+newID)
+      }else{        
+        unfillCustomerOutputArray(newID)
+        console.log("UNCHECKED"+newID)
+      }      
+    })
   table.appendChild(newTableRow)
   newTableRow.appendChild(newtd1)
   newTableRow.appendChild(newtd2)
   newTableRow.appendChild(newtd3)
   newTableRow.appendChild(newtd4)
-
   tableID++
+ }
+// console.log(tableID)
+ console.log(customerOutputArray)
+ console.log(returnArray)
+
 }
+
+
+
 
 function createUsersSearch(usersData) {
   // handle success
@@ -433,6 +496,10 @@ function createUsersSearch(usersData) {
           p.innerHTML = suggested.forename + ' ' + suggested.surname
   
           p.addEventListener('click', function(){
+            let addCustomerWrapper = document.getElementById("addCustomerWrapper")
+            addCustomerWrapper.style.display = "none"
+            let customerResults = document.getElementById("customerResults")
+            customerResults.style.display = "flex"
             console.log("Customer KLICK")
             createCustomerResults(suggested)
          //    let i = document.getElementById("userInput")
@@ -455,8 +522,6 @@ function createUsersSearch(usersData) {
               console.log("outputForm: "+outputForm)          
               r.remove()
     }
-
-    
 
     window.addEventListener('DOMContentLoaded', (event) => {
     console.log('DOM fully loaded and parsed')
@@ -533,12 +598,28 @@ function createUsersSearch(usersData) {
     k.style.display = "flex"
     let c = document.getElementById("customerResults")
     c.style.display = "none"
+    let customerCreator = document.getElementById("addCustomerWrapper")
+    customerCreator.style.display = "none"
+    let style = 1
+    changeStyle(style)
    }
 
    function showMainResults(){
      let i = document.getElementById("mainResults")
      i.style.display= "flex"
    }
+
+   function showCustomerCreator(){
+    let customerCreator = document.getElementById("addCustomerWrapper")
+    customerCreator.style.display = "flex"
+    let startSuggestions = document.getElementById("mainpage")
+    startSuggestions.style.display = "none"
+    let customerResults = document.getElementById("customerResults")
+    customerResults.style.display = "none"
+    let body = document.body
+
+  }
+
    
    dim()
 
@@ -572,9 +653,11 @@ function createUsersSearch(usersData) {
     let suggest = document.getElementById("suggestions")
     let input = document.getElementById("inputSuggestionsWrapper")
     let inputMovies = document.getElementById("inputSuggestion")
+    let addCustomerWrapper = document.getElementById("addCustomerWrapper")
  //   let userInput = document.getElementById("userInput")
  //   let inputUsers = document.getElementById("inputUsers")
     let mainpage = document.getElementById("mainpage")
+    let mainResults = document.getElementById("mainResults")
     let logoWrapper = document.getElementById("logoWrapper")
     let customerResults = document.getElementById("customerResults")
     console.log(inputMovies.innerHTML)
@@ -585,7 +668,9 @@ function createUsersSearch(usersData) {
       c.style.display = "block"
       m.style.display = "none"
       s.innerHTML = "Filme"
-      customerResults.style.display = "flex"
+      customerResults.style.display = "none"
+      mainResults.style.display = "none"
+      addCustomerWrapper.style.display = "none"
       if(s.innerHTML === "Filme"){
         logoWrapper.setAttribute("onclick", 'showMovieSuggestions()')
       }
@@ -607,6 +692,8 @@ function createUsersSearch(usersData) {
       m.style.display = "block"
       s.innerHTML = "Kunden"
       customerResults.style.display = "none"
+      mainResults.style.display = "none"
+      addCustomerWrapper.style.display = "none"
       if(s.innerHTML === "Kunden"){
         logoWrapper.setAttribute("onclick", 'showMovieSuggestions()')
       }
@@ -634,4 +721,8 @@ function createUsersSearch(usersData) {
     .catch(function (error) {
       console.log(error);
     });
+   }
+
+   function saveCustomerData(){
+     console.log("saveCustomerData")
    }
