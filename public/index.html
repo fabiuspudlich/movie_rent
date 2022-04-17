@@ -108,16 +108,19 @@
     </div>
      
    </div>
-   <button id="movieReturn" onclick="saveCustomerData()">Rückgabe</button>
+   <button id="movieReturn" onclick="returnMovie()">Rückgabe</button>
  </div>
  <div id="addCustomerWrapper">
-   <form id="customerTextInput">
+   <div id="newWrapper">
+   <div id="customerTextInput">
      <p>Neuen Kunden anlegen:</p>
-     <input type="text" id="customerForename" placeholder="Vorname">
-     <input type="text" id="customerSurename" placeholder="Nachname">
-     <button id="createNewCustomer">Fertig</button>
-   </form>
-   
+     <input type="text" id="customerForename" placeholder="Vorname" autocomplete="off">
+     <input type="text" id="customerSurname" placeholder="Nachname" autocomplete="off">
+    
+   </div>
+   <button id="createNewCustomer" onclick="saveNewCustomerData()">Fertig</button>
+  </div> 
+   </div>
  </div>
    <div id="ausgeliehen" style="display: none;">
       <p>Filme ausgeliehen!</p>
@@ -140,7 +143,7 @@
         <form>
           <input type="text" id="output">
           
-        <button onclick="saveData(); showRentWindow()" type="button" id="checkout" >Checkout</button>
+        <button onclick="rentMovie(); showRentWindow()" type="button" id="checkout" >Checkout</button>
       </form>
       </div>
     </div>

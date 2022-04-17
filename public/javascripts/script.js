@@ -10,7 +10,9 @@ var movieDivID = 0
 var TestCounter = 0
 var tableID = 0
 var customerOutputArray = []
+var customerOutPutNumber = []
 var tableTitle = ""
+var customerChoice = 0
 
 async function getdata() {
   console.log("getting data...")
@@ -25,7 +27,6 @@ async function getdata() {
   createSuggestions(movieData)
 })
 }
-
 
 
 function createSuggestions(movieData) {
@@ -189,11 +190,8 @@ function movieSuggestionSearch(){
             
         let s = document.getElementById("inputSuggestion")
         s.innerHTML = ''
-      //  showWindow()
-        hideMovieSuggestions()
         stateTwo()
         createInputSuggestions(suggested, movieData, inputCounter, panelArray, genreArray)
-        // create new main result
             let inputSuggestion = document.getElementById("inputSuggestion")
             let wrapper = document.createElement("div")
             wrapper.setAttribute("id", 'div'+divID)
@@ -215,6 +213,7 @@ function movieSuggestionSearch(){
                   selectedMovie.setAttribute("id", 'movieDiv'+movieDivID)
 
                 outputForm.splice(movieDivID, 0, suggested.movieID)
+
                 console.log(outputForm)
                 
                 let button = document.createElement("button")                  
@@ -236,6 +235,7 @@ function movieSuggestionSearch(){
           console.log("TEST :"+TestCounter)
 }
 
+// Create movie search / generate results / add to Shopping Kart
 
 function createMovieSearch(movieData) {
   const searchInput = document.getElementById("navSearch")
@@ -265,16 +265,12 @@ function createMovieSearch(movieData) {
           p.innerHTML = suggested.title}
   
           p.addEventListener('click', function(){
-            console.log("KLICK")
             inputCounter++
             createInputSuggestions(suggested, movieData, inputCounter, panelArray, genreArray)
             let s = document.getElementById("inputSuggestion")
             s.innerHTML = ''
-          //  showWindow()
             undim()
-          //  hideMovieSuggestions()
             stateTwo()
-          //  showMainResults()
             suggestionsPanel.textContent=''
             let i = document.getElementById("inputSuggestion")
             let wrapper = document.createElement("div")
@@ -325,22 +321,6 @@ function createMovieSearch(movieData) {
   }) 
 }
 
-
-/*  
-function createSuggestionMovieSearch(movieData){
-  const suggestion = movieData
-  console.log(searchInput.value)
-  const input = searchInput.value.toLowerCase()
-  const movieSuggestion = mydata.filter(function(suchInput) {
-    if(suchInput.title.toLowerCase().startsWith(input)){       
-      return suchInput.title.toLowerCase().startsWith(input)}      
-});
-
-   movieSuggestion.forEach(function(suggested) {
-
-   }
-} */
-
 function fillCustomerOutputArray(suggested, newID){
   console.log(newID)
   console.log(suggested)
@@ -371,7 +351,7 @@ function createCustomerResults(suggested){
   customerOutputArray = []
   let customerInfo = document.getElementById("customerInfo")
   customerInfo.innerHTML = suggested.forename + ' ' + suggested.surname + ' ' + suggested.cNumber
- 
+  customerOutPutNumber[0] = suggested.cNumber
   let returnArray = []
 
   console.log("suggested.rentedMovies.length"+suggested.rentedMovies.length)
@@ -393,7 +373,6 @@ function createCustomerResults(suggested){
 
   for(let i=0; i < suggested.rentedMovies.length; i++){    
     console.log(suggested.rentedMovies.length)
-    console.log("Kunden Filme Schleife")
   
   let newTableRow = document.createElement('tr')
     newTableRow.setAttribute("id", 'tableRow'+tableID)
@@ -474,6 +453,8 @@ function createUsersSearch(usersData) {
             let s = document.getElementById("customerSuggestions")
             s.textContent=''
             c.innerHTML = 'Kunde: '+suggested.surname+' '+suggested.cNumber 
+            customerChoice = suggested.cNumber
+
           })   
           customerSuggestions.appendChild(p)
       });
@@ -513,10 +494,6 @@ function createUsersSearch(usersData) {
             customerResults.style.display = "flex"
             console.log("Customer KLICK")
             createCustomerResults(suggested)
-         //    let i = document.getElementById("userInput")
-         //    let j = document.getElementById("inputUsers")
-         //    i.style.display = "flex"
-         //    j.innerHTML = suggested.forename + ' ' + suggested.surname + ' ' + suggested.cNumber + ' ' + suggested.rentedMovies + ' ' + suggested.rentTime
           })   
           navCustomerSuggestions.appendChild(p)
       });
@@ -547,13 +524,6 @@ function createUsersSearch(usersData) {
       k.style.marginRight = "-0px"
      }
    }
-/*
-   function showWindow(){
-     let movieWindow = document.getElementById("inputSuggestion")
-     if(movieWindow.style.display === "none"){
-      movieWindow.style.display = "flex"
-     }
-   } */
 
    function dim(){
      let dim = document.getElementById("dim")
@@ -578,8 +548,10 @@ function createUsersSearch(usersData) {
      })  
    }
 
+
+// Filme ausgeliehen!   
   
-function showRentWindow(){
+function showRentWindow(){   
     let i = outputForm.filter(Number)
     let priceCounter = i.length
     console.log(priceCounter)
@@ -595,6 +567,7 @@ function showRentWindow(){
     customerResults.style.display = "none"
     let addCustomerWrapper = document.getElementById("addCustomerWrapper")
     addCustomerWrapper.style.display = "none"
+    customDim()
 
 }
 
@@ -608,11 +581,6 @@ function showRentWindow(){
      window.location.reload()
      }
      let timeout = setTimeout(reloadPage, 1700)
-   }
-
-   function hideMovieSuggestions(){
-    // let i = document.getElementById("movieSuggestions")
-    // i.style.display = "none"
    }
 
    function hideCustomerSuggestions(){
@@ -647,12 +615,12 @@ function showRentWindow(){
     startSuggestions.style.display = "none"
     let customerResults = document.getElementById("customerResults")
     customerResults.style.display = "none"
-    let body = document.body
-
   }
 
    
    dim()
+
+  // Undim Window 
 
    function undim(){
     let dim = document.getElementById("dim")
@@ -671,6 +639,13 @@ function showRentWindow(){
     }
     dim.style.display = "none"
     dimNav.style.display= "none"
+   }
+
+   function customDim(){
+    let dim = document.getElementById("dim")
+    let dimNav = document.getElementById("dimNav")
+    dim.style.display = "block"
+    dimNav.style.display= "block"
    }
 
 // Start Results State
@@ -755,73 +730,15 @@ if(s.innerHTML == "Kundensuche"){
 }
 }
 
-   var style = 0
-/*
-   function changeStyle(){
-    let b = document.body
-    let k = document.getElementById("shoppingKartWrapper")
-    let m = document.getElementById("navSearch")
-    let c = document.getElementById("customerSearch")
-    let s = document.getElementById("styleChange")
-    let suggest = document.getElementById("suggestions")
-    let input = document.getElementById("inputSuggestionsWrapper")
-    let inputMovies = document.getElementById("inputSuggestion")
-    let addCustomerWrapper = document.getElementById("addCustomerWrapper")
- //   let userInput = document.getElementById("userInput")
- //   let inputUsers = document.getElementById("inputUsers")
-    let mainpage = document.getElementById("mainpage")
-    let mainResults = document.getElementById("mainResults")
-    let logoWrapper = document.getElementById("logoWrapper")
-    let customerResults = document.getElementById("customerResults")
-    console.log(inputMovies.innerHTML)
-    if(style === 0){
-      style = 1
-      b.style = "width: 100%; height: 100%; margin-top: 0px; background:linear-gradient(rgba(17, 16, 16, 0.5), rgba(0, 0, 0, 0.5)), url(https://media.timeout.com/images/105306356/image.jpg); padding-top: 0px; padding-bottom: 0px; margin-left: 0; background-position: center center; background-attachment: fixed; background-size: cover; background-repeat: no-repeat; background-color: rgb(56, 54, 54);"
-    //  k.style.display = "none"
-      c.style.display = "block"
-      m.style.display = "none"
-      s.innerHTML = "Filme"
-      customerResults.style.display = "none"
-      mainResults.style.display = "none"
-      addCustomerWrapper.style.display = "none"
-      if(s.innerHTML === "Filme"){
-        logoWrapper.setAttribute("onclick", 'stateOne()')
-      }
-      suggest.style.display = "none"
-      input.style.display = "none"
-      mainpage.style.display = "none"
-      } 
-
-      else {
-      style = 0
-      b.style = "width: 100%; height: 100%; margin-top: 0px; background:linear-gradient(rgba(17, 16, 16, 0.5), rgba(0, 0, 0, 0.5)), url(https://duofischbach.ch/wp-content/uploads/2016/05/Movie-Theater-Wallpaper-2016.jpg); padding-top: 0px; padding-bottom: 0px; margin-left: 0; background-position: center center; background-attachment: fixed; background-size: cover; background-repeat: no-repeat; background-color: rgb(56, 54, 54);"
-      k.style.display = "block"
-      c.style.display = "none"
-      m.style.display = "block"
-      s.innerHTML = "Kunden"
-      customerResults.style.display = "none"
-      mainResults.style.display = "none"
-      addCustomerWrapper.style.display = "none"
-      if(s.innerHTML === "Kunden"){
-        logoWrapper.setAttribute("onclick", 'showMovieSuggestions()')
-      }
-     // userInput.style.display = "none"
-     // mainpage.style.display = "flex"
-      if(inputMovies.innerHTML === ""){
-      input.style.display = "none"
-      }  
-      else{
-        input.style.display = "flex"}
-    }
-   }  */
-
-   function saveData(){
+   function rentMovie(){
+    let customer = customerChoice
     outputArray = outputForm.filter(Number)               
-    output.value = outputArray
-    let o = document.getElementById("output").value
- /*   o.value */
+    var rentData = {
+      userID: customer,
+      movies: outputArray
+    }  
     axios.post('/save_movies', {
-      o: output.value
+      o: rentData  
     })
     .then(function (response) {
       console.log(response);
@@ -831,8 +748,44 @@ if(s.innerHTML == "Kundensuche"){
     });
    }
 
-   function saveCustomerData(){
-     console.log("saveCustomerData")
+   function returnMovie(){
+     let i = customerOutPutNumber
+     let j = customerOutputArray.filter(Number)
+     console.log(i)
+     console.log(j)
+     var returnData = {
+      userID: i,
+      movies: j
+    } 
+     axios.post('/save_movies', {
+      o: returnData  
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
    }
 
-  
+   function saveNewCustomerData(){
+     let i = document.getElementById("customerForename")
+     let j = document.getElementById("customerSurname")
+     console.log(i)
+     console.log(j)
+     let forename = i.value
+     let surname = j.value
+     var newCustomer = {
+      forename: forename,
+      surname: surname
+    } 
+     axios.post('/create_customer', {
+      o: newCustomer  
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+   }

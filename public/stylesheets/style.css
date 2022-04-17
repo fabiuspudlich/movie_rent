@@ -946,6 +946,7 @@ td input{
   display: none;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 
 #customerTextInput{
@@ -957,7 +958,6 @@ td input{
   flex-direction:  column;
   justify-content: center;
   align-items: center;
-  background-color: rgb(255, 255, 255);
   border-radius: 15px;
 }
 
@@ -968,27 +968,41 @@ td input{
 }
 
 #customerTextInput > input{
-  width: 70%;
+  width: 50%;
   max-height: 40px;
   font-size: 24px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  margin-top: 20px;
+  margin-top: 30px;
+  margin-bottom: 30px;
   border-radius: 5px;
 }
 
-#customerTextInput button{
+
+
+#createNewCustomer{
   width: 90px;
   height: 40px;
   background-color: rgb(75, 11, 11);
-  margin-top: 20px;
   border-radius: 10px;
+  margin-bottom: 30px;
   color: white;
   font-size: 24px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   transition: transform .3s ease-in-out;
 }
 
-#customerTextInput button:hover{
+#createNewCustomer:hover{
   transform: scale(1.2);
   cursor: pointer;
+}
+
+#newWrapper{
+  background-color: rgb(255, 255, 255);
+  border-radius: 15px;
+  display: flex;
+  width: 70%;
+  height: 500px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }

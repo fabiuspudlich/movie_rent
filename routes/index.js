@@ -50,7 +50,7 @@ router.post('/save_movies', function(req, res, next) {
   res.json('erfolgreich');
 });
 
-router.get('/create_customer', (req, res, next) => {
+router.post('/create_customer', (req, res, next) => {
   createCustomer(function (cb) {
     data.movies = cb.movies
     res.json({data: data});
