@@ -12,7 +12,7 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-router.post('/get_data', (req, res, next) => {
+router.get('/get_data', (req, res, next) => {
   //  get users
   getUsers(function (cb) {
     data.users = cb.users

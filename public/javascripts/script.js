@@ -15,7 +15,7 @@ var tableTitle = ""
 
 async function getdata() {
   console.log("getting data...")
-  axios.post('/get_data')
+  axios.get('/get_data')
   .then(function (response) {
   // handle success
   console.log(response)
