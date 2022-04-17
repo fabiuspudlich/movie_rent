@@ -797,7 +797,7 @@ h1{font-size: 200%;
    justify-content: center;
    align-items: center;
    transition: background-size 1s ease-in-out;
-   background-size: 165%;
+   background-size: 171%;
    background-repeat: no-repeat;
    background-position: center;
    
@@ -1005,4 +1005,21 @@ td input{
   justify-content: center;
   align-items: center;
   flex-direction: column;
+}
+
+#imageWrapper button{
+  width: 90px;
+  height: 40px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
+  margin-bottom: 30px;
+  color: rgb(59, 59, 59);
+  font-size: 24px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  transition: transform .3s ease-in-out;
+}
+
+#imageWrapper button:hover{
+  transform: scale(1.2);
+  cursor: pointer;
 }

@@ -63,15 +63,6 @@
         "genre": "arthouse" 
     },
     {
-        "title": "Memento",
-        "available": "0",
-        "price": "2€",
-        "movieID": "45678",
-        "cover": "https://m.media-amazon.com/images/I/9162xNqGTCL._AC_SL1500_.jpg",
-        "image": "https://i0.wp.com/comic.highlightzone.de/wp-content/uploads/2020/08/Memento-3.jpg",
-        "genre": "krimi" 
-    },
-    {
         "title": "Angel has Fallen",
         "available": "15",
         "price": "2€",
@@ -108,6 +99,15 @@
         "genre": "drama" 
     },
     {
+        "title": "Forrest Gump",
+        "available": "1",
+        "price": "2€",
+        "movieID": "19579",
+        "cover": "https://m.media-amazon.com/images/M/MV5BNWIwODRlZTUtY2U3ZS00Yzg1LWJhNzYtMmZiYmEyNmU1NjMzXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_FMjpg_UX1000_.jpg",
+        "image": "https://www1.wdr.de/stichtag/stichtag-forrest-gump-filmpremiere-100~_v-gseagaleriexl.jpg",
+        "genre": "drama" 
+    },
+    {
         "title": "Die Verurteilten",
         "available": "12",
         "price": "2€",
@@ -124,15 +124,6 @@
         "cover": "https://m.media-amazon.com/images/M/MV5BMTk4NjM0MjI3MV5BMl5BanBnXkFtZTcwNjcxMDYzNg@@._V1_FMjpg_UX1000_.jpg",
         "image": "https://i1.wp.com/www.thelacanianreviews.com/wp-content/uploads/2020/04/melancholia1_0.jpg?fit=2400%2C1350&ssl=1",
         "genre": "drama" 
-    },
-    {
-        "title": "Shutter Island",
-        "available": "23",
-        "price": "2€",
-        "movieID": "54321",
-        "cover": "https://m.media-amazon.com/images/I/81FNja+9-iL._SL1500_.jpg",
-        "image": "https://filmkunstkinos.de/wp-content/uploads/2017/09/032.jpg",
-        "genre": "thriller" 
     },
     {
         "title": "Inception",

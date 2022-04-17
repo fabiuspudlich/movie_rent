@@ -410,23 +410,12 @@ function createCustomerResults(suggested){
 // console.log(tableID)
  console.log(customerOutputArray)
  console.log(returnArray)
-
 }
-
-
-
 
 function createUsersSearch(usersData) {
   // handle success
   customerData = usersData
 
-/*const searchInput = document.getElementById("navSearch")
-  const suggestionsPanel = document.getElementById("suggestions")
-  const mydata = usersData
-  var divID = 0
-  let movieID = 0   */
-  //  console.log(response.users.value+"mydata")
-  
   const customerInput = document.getElementById("customerInput")
   const customerSuggestions = document.getElementById("customerSuggestions")
   
