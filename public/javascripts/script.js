@@ -12,7 +12,6 @@ var tableID = 0
 var customerOutputArray = []
 var tableTitle = ""
 
-
 async function getdata() {
   console.log("getting data...")
   axios.get('/get_data')
@@ -190,9 +189,9 @@ function movieSuggestionSearch(){
             
         let s = document.getElementById("inputSuggestion")
         s.innerHTML = ''
-        showWindow()
+      //  showWindow()
         hideMovieSuggestions()
-        showMainResults()
+        stateTwo()
         createInputSuggestions(suggested, movieData, inputCounter, panelArray, genreArray)
         // create new main result
             let inputSuggestion = document.getElementById("inputSuggestion")
@@ -271,11 +270,11 @@ function createMovieSearch(movieData) {
             createInputSuggestions(suggested, movieData, inputCounter, panelArray, genreArray)
             let s = document.getElementById("inputSuggestion")
             s.innerHTML = ''
-            showWindow()
+          //  showWindow()
             undim()
-            hideMovieSuggestions()
+          //  hideMovieSuggestions()
             stateTwo()
-            showMainResults()
+          //  showMainResults()
             suggestionsPanel.textContent=''
             let i = document.getElementById("inputSuggestion")
             let wrapper = document.createElement("div")
@@ -291,6 +290,7 @@ function createMovieSearch(movieData) {
               b.setAttribute("cursor", 'pointer')        
               b.innerHTML = '+'
               b.addEventListener('click', function(){
+                console.log("PREISCOUNTER: "+priceCounter)
                 movieDivID++ 
                 let t = suggested.title
                 console.log(t)
@@ -305,7 +305,7 @@ function createMovieSearch(movieData) {
                 button.innerHTML = '-'
                 button.setAttribute("id", 'buttonID'+movieDivID)
                 button.setAttribute("value", movieDivID)
-                button.setAttribute("onclick", 'removeMovie(this.value)')
+                button.setAttribute("onclick", 'removeMovie(this.value); priceCounterDown')
                 let movie = document.createElement('p')
                 movie.setAttribute("id", 'movie'+movieDivID)
                 movie.innerHTML = t
@@ -324,6 +324,8 @@ function createMovieSearch(movieData) {
       }
   }) 
 }
+
+
 /*  
 function createSuggestionMovieSearch(movieData){
   const suggestion = movieData
@@ -503,6 +505,8 @@ function createUsersSearch(usersData) {
           p.innerHTML = suggested.forename + ' ' + suggested.surname
   
           p.addEventListener('click', function(){
+            hideCustomerSuggestions()
+            undim()
             let addCustomerWrapper = document.getElementById("addCustomerWrapper")
             addCustomerWrapper.style.display = "none"
             let customerResults = document.getElementById("customerResults")
@@ -543,13 +547,13 @@ function createUsersSearch(usersData) {
       k.style.marginRight = "-0px"
      }
    }
-
+/*
    function showWindow(){
      let movieWindow = document.getElementById("inputSuggestion")
      if(movieWindow.style.display === "none"){
       movieWindow.style.display = "flex"
      }
-   }
+   } */
 
    function dim(){
      let dim = document.getElementById("dim")
@@ -575,14 +579,31 @@ function createUsersSearch(usersData) {
    }
 
   
+function showRentWindow(){
+    let i = outputForm.filter(Number)
+    let priceCounter = i.length
+    console.log(priceCounter)
+    let a = document.getElementById("ausgeliehen")
+    a.style.display = "flex"
+    let priceFinal = document.getElementById("price")
+    priceFinal.innerHTML = "Preis: "+(priceCounter*2)+" Euro"
+    let mainpage = document.getElementById("mainpage")
+    mainpage.style.display = "none"
+    let mainResults = document.getElementById("mainResults")
+    mainResults.style.display = "none"
+    let customerResults = document.getElementById("customerResults")
+    customerResults.style.display = "none"
+    let addCustomerWrapper = document.getElementById("addCustomerWrapper")
+    addCustomerWrapper.style.display = "none"
+
+}
+
    function loadPage(){
      let i = document.getElementById("shoppingKartWrapper")
      i.style.display = "none"
      let j = document.getElementById("mainResults")
      j.style.display = "none"
-     console.log("reload")
-     let a = document.getElementById("ausgeliehen")
-     a.style.display = "block" 
+     console.log("reload") 
      function reloadPage(){ 
      window.location.reload()
      }
@@ -590,17 +611,13 @@ function createUsersSearch(usersData) {
    }
 
    function hideMovieSuggestions(){
-     let i = document.getElementById("movieSuggestions")
-     i.style.display = "none"
-  //   let j = document.getElementById("mainpage")
-  //   j.style.display = "none"
+    // let i = document.getElementById("movieSuggestions")
+    // i.style.display = "none"
    }
 
    function hideCustomerSuggestions(){
     let i = document.getElementById("navCustomerSuggestions")
     i.style.display = "none"
-  //  let j = document.getElementById("mainpage")
-  //  j.style.display = "none"
   }
 
    function showMovieSuggestions(){
@@ -656,9 +673,10 @@ function createUsersSearch(usersData) {
     dimNav.style.display= "none"
    }
 
-   // Start Results State
+// Start Results State
 
  function stateOne(){
+  console.log("STATE ONE")
   let mainpage = document.getElementById("mainpage")
   mainpage.style.display = "flex"
   let mainResults = document.getElementById("mainResults")
@@ -674,6 +692,7 @@ function createUsersSearch(usersData) {
 // Movie Results State 
 
 function stateTwo(){
+  console.log("STATE TWO")
  let mainpage = document.getElementById("mainpage")
  mainpage.style.display = "none"
  let mainResults = document.getElementById("mainResults")
@@ -689,6 +708,7 @@ function stateTwo(){
 // New Customer State
 
 function stateThree(){
+  console.log("STATE THREE")
  let mainpage = document.getElementById("mainpage")
  mainpage.style.display = "none"
  let mainResults = document.getElementById("mainResults")
@@ -704,6 +724,7 @@ function stateThree(){
 // Customer Results State
 
 function stateFour(){
+  console.log("STATE FOUR")
 let mainpage = document.getElementById("mainpage")
 mainpage.style.display = "none"
 let mainResults = document.getElementById("mainResults")
