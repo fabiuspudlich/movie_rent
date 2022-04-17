@@ -188,7 +188,7 @@ h1{font-size: 200%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
   left: 50%;
   margin-left: -250px;
   top: 50%;
@@ -203,12 +203,31 @@ h1{font-size: 200%;
 
 #ausgeliehen p{
   width: 500px;
-  margin-top: 180px;
   text-align: center;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: 35px;
   font-weight: bolder;
   color: white;}  
+
+ #weiter{
+  width: 90px;
+  height: 40px;
+  background-color: rgb(75, 11, 11);
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 10px;
+  color: white;
+  font-size: 24px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  transition: transform .3s ease-in-out;
+  border-radius: 5px;
+ } 
+
+#weiter:hover{
+  transform: scale(1.2);
+  cursor: pointer;
+}
 
 /* --------------------------------------------------------------SUCHE--------------------------------------------------------------------------------*/     
 
@@ -320,7 +339,7 @@ h1{font-size: 200%;
 
 #shoppingKart{
   
-  background-color: rgb(51, 50, 50);
+  background-color: rgb(34, 33, 33);
   width: 220px;
   height: 100%;
   float: right;
@@ -366,6 +385,7 @@ h1{font-size: 200%;
   width: 180px;
   height: 25px;
   font-size: 20px;
+  color:rgb(56, 54, 54);
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
@@ -379,22 +399,36 @@ h1{font-size: 200%;
   position: fixed;}
 
 #customerSuggestions p{
-  color: rgb(255, 255, 255);
+  color: rgb(102, 101, 101);
   height: 20px;
-  width: 130px;
+  width: 170px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: 12px;
   padding-left: 8px;
   cursor: pointer;
-  background-color: white;
+  background-color: rgb(226, 226, 226);
   padding-top: 4px;
   margin-top: 0px;
   margin-bottom: 0px;}
 
+  #customerSuggestions p:hover{
+    color: rgb(255, 255, 255);
+    height: 20px;
+    width: 170px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 12px;
+    padding-left: 8px;
+    cursor: pointer;
+    background-color: rgb(110, 109, 109);
+    padding-top: 4px;
+    margin-top: 0px;
+    margin-bottom: 0px;}
+  
+
 #setCustomer{
   font-size: 12px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  color: rgb(100, 98, 98);
+  color: rgb(255, 255, 255);
   width: 180px;
   height: 20px;
   margin-left: 30px;}
@@ -403,7 +437,8 @@ h1{font-size: 200%;
   width: 176px;
   margin-left: auto;
   margin-right: auto;
-  min-height: 640px;
+  min-height: 630px;
+  max-height: 630px;
   overflow: auto;
   overflow-x: hidden;}
 
@@ -416,11 +451,22 @@ h1{font-size: 200%;
   padding-left: 20px;}
 
 #checkout{
+  background-color: rgb(90, 23, 23);
+  color: white;
+  font-size: 20px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bold;
   position: fixed;
   margin-bottom: 0px;
   margin-left: 60px;
   cursor: pointer;
+  transition: transform .3s ease-in-out;
+  border-radius: 5px;
 }  
+
+#checkout:hover{
+  transform: scale(1.2);
+}
 
 #output{
   position: fixed;
@@ -562,7 +608,7 @@ h1{font-size: 200%;
     height: 90%;
     margin-top: 70px;
   /*  backdrop-filter: blur(10px); */
-    position: relative;
+  /*  position: relative;   */
     margin-left: auto;
     margin-right: auto;
     z-index: 1;
@@ -912,7 +958,7 @@ td input{
   justify-content: center;
   align-items: center;
   background-color: rgb(255, 255, 255);
-  border-radius: 10px;
+  border-radius: 15px;
 }
 
 #customerTextInput p{

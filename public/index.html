@@ -14,7 +14,7 @@
 
 <body style="width: 100%; height: 100%; margin-top: 0px; background:linear-gradient(rgba(17, 16, 16, 0.5), rgba(0, 0, 0, 0.5)), url(https://duofischbach.ch/wp-content/uploads/2016/05/Movie-Theater-Wallpaper-2016.jpg); padding-top: 0px; padding-bottom: 0px; margin-left: 0; background-position: center center; background-attachment: fixed; background-size: cover; background-repeat: no-repeat; background-color: rgb(56, 54, 54);">
   <nav>
-    <div id="logoWrapper" onclick="stateOne()">
+    <div id="logoWrapper">
       <img id="logo" src="https://cdn-icons-png.flaticon.com/512/3409/3409602.png" onclick="stateOne()"></img>
       <h1 onclick="stateOne()">MovieRent</h1>    
   </div>
@@ -121,6 +121,8 @@
  </div>
    <div id="ausgeliehen" style="display: none;">
       <p>Filme ausgeliehen!</p>
+      <p id="price"></p>
+      <button id ="weiter" onclick="loadPage()">Weiter</button>
     </div> 
     <div id="shoppingKartWrapper" style="display: block;">
       <div id="shoppingKart">
@@ -138,7 +140,7 @@
         <form>
           <input type="text" id="output">
           
-        <button onclick="saveData(); loadPage()" type="button" id="checkout" >Checkout</button>
+        <button onclick="saveData(); showRentWindow()" type="button" id="checkout" >Checkout</button>
       </form>
       </div>
     </div>
