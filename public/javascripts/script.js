@@ -8,6 +8,9 @@ var genreArray = []
 var divID = 0
 var movieDivID = 0
 var TestCounter = 0
+var tableID = 0
+var customerOutputArray = []
+var tableTitle = ""
 
 async function getdata() {
   // Make a request for a user with a given ID
@@ -328,6 +331,40 @@ function createSuggestionMovieSearch(movieData){
    }
 } */
 
+function createCustomerResults(suggested){
+  console.log("createCustomerResults")
+  console.log(suggested)
+  console.log
+  let customerInfo = document.getElementById("customerInfo")
+  customerInfo.innerHTML = suggested.forename + ' ' + suggested.surname + ' ' + suggested.cNumber
+  let table = document.getElementById("customerMovies")
+  let newTableRow = document.createElement('tr')
+  newTableRow.setAttribute("id", 'tableRow'+tableID)
+    let newtd1 = document.createElement("td")
+    
+    for(i=0; i<movieData.length; i++){
+    console.log(movieData[i].movieID)
+    console.log(suggested.rentedMovies[tableID])
+      if(movieData[i].movieID == suggested.rentedMovies[tableID]){
+        tableTitle = movieData[i].title               
+      }
+    }
+    newtd1.innerHTML = tableTitle
+    let newtd2 = document.createElement("td")
+    newtd2.innerHTML = suggested.rentedMovies[tableID]
+    let newtd3 = document.createElement("td")
+    newtd3.innerHTML = suggested.rentTime
+    let newtd4 = document.createElement("input")
+    newtd4.setAttribute("type", 'checkbox')
+  table.appendChild(newTableRow)
+  newTableRow.appendChild(newtd1)
+  newTableRow.appendChild(newtd2)
+  newTableRow.appendChild(newtd3)
+  newTableRow.appendChild(newtd4)
+
+  tableID++
+}
+
 function createUsersSearch(usersData) {
   // handle success
   customerData = usersData
@@ -360,7 +397,7 @@ function createUsersSearch(usersData) {
           const p = document.createElement('p')
           p.innerHTML = suggested.forename + ' ' + suggested.surname
   
-          p.addEventListener('click', function(){
+          p.addEventListener('click', function(){            
             let c = document.getElementById("setCustomer")
             let s = document.getElementById("customerSuggestions")
             s.textContent=''
@@ -396,10 +433,12 @@ function createUsersSearch(usersData) {
           p.innerHTML = suggested.forename + ' ' + suggested.surname
   
           p.addEventListener('click', function(){
-             let i = document.getElementById("userInput")
-             let j = document.getElementById("inputUsers")
-             i.style.display = "flex"
-             j.innerHTML = suggested.forename + ' ' + suggested.surname + ' ' + suggested.cNumber + ' ' + suggested.rentedMovies + ' ' + suggested.rentTime
+            console.log("Customer KLICK")
+            createCustomerResults(suggested)
+         //    let i = document.getElementById("userInput")
+         //    let j = document.getElementById("inputUsers")
+         //    i.style.display = "flex"
+         //    j.innerHTML = suggested.forename + ' ' + suggested.surname + ' ' + suggested.cNumber + ' ' + suggested.rentedMovies + ' ' + suggested.rentTime
           })   
           navCustomerSuggestions.appendChild(p)
       });
@@ -492,6 +531,8 @@ function createUsersSearch(usersData) {
     j.style.display = "none"
     let k = document.getElementById("mainpage")
     k.style.display = "flex"
+    let c = document.getElementById("customerResults")
+    c.style.display = "none"
    }
 
    function showMainResults(){
@@ -531,10 +572,11 @@ function createUsersSearch(usersData) {
     let suggest = document.getElementById("suggestions")
     let input = document.getElementById("inputSuggestionsWrapper")
     let inputMovies = document.getElementById("inputSuggestion")
-    let userInput = document.getElementById("userInput")
-    let inputUsers = document.getElementById("inputUsers")
+ //   let userInput = document.getElementById("userInput")
+ //   let inputUsers = document.getElementById("inputUsers")
     let mainpage = document.getElementById("mainpage")
     let logoWrapper = document.getElementById("logoWrapper")
+    let customerResults = document.getElementById("customerResults")
     console.log(inputMovies.innerHTML)
     if(style === 0){
       style = 1
@@ -543,18 +585,19 @@ function createUsersSearch(usersData) {
       c.style.display = "block"
       m.style.display = "none"
       s.innerHTML = "Filme"
+      customerResults.style.display = "flex"
       if(s.innerHTML === "Filme"){
-        logoWrapper.setAttribute("onclick", '')
+        logoWrapper.setAttribute("onclick", 'showMovieSuggestions()')
       }
       suggest.style.display = "none"
       input.style.display = "none"
       mainpage.style.display = "none"
-      if(inputUsers.innerHTML === ""){
+ /*     if(inputUsers.innerHTML === ""){
         userInput.style.display = "none"
         }  
         else{
-          userInput.style.display = "flex"}
-      }
+          userInput.style.display = "flex"} */
+      } 
 
       else {
       style = 0
@@ -563,10 +606,11 @@ function createUsersSearch(usersData) {
       c.style.display = "none"
       m.style.display = "block"
       s.innerHTML = "Kunden"
+      customerResults.style.display = "none"
       if(s.innerHTML === "Kunden"){
         logoWrapper.setAttribute("onclick", 'showMovieSuggestions()')
       }
-      userInput.style.display = "none"
+     // userInput.style.display = "none"
      // mainpage.style.display = "flex"
       if(inputMovies.innerHTML === ""){
       input.style.display = "none"
