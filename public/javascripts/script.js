@@ -268,6 +268,7 @@ function createMovieSearch(movieData) {
             showWindow()
             undim()
             hideMovieSuggestions()
+            stateTwo()
             showMainResults()
             suggestionsPanel.textContent=''
             let i = document.getElementById("inputSuggestion")
@@ -357,7 +358,7 @@ function wipeList(){
 
 function createCustomerResults(suggested){
   wipeList()
-
+  stateFour()
   tableID = 0
   customerOutputArray = []
   let customerInfo = document.getElementById("customerInfo")
@@ -643,7 +644,7 @@ function createUsersSearch(usersData) {
    }
 
    var style = 0
-
+/*
    function changeStyle(){
     let b = document.body
     let k = document.getElementById("shoppingKartWrapper")
@@ -664,7 +665,7 @@ function createUsersSearch(usersData) {
     if(style === 0){
       style = 1
       b.style = "width: 100%; height: 100%; margin-top: 0px; background:linear-gradient(rgba(17, 16, 16, 0.5), rgba(0, 0, 0, 0.5)), url(https://media.timeout.com/images/105306356/image.jpg); padding-top: 0px; padding-bottom: 0px; margin-left: 0; background-position: center center; background-attachment: fixed; background-size: cover; background-repeat: no-repeat; background-color: rgb(56, 54, 54);"
-      k.style.display = "none"
+    //  k.style.display = "none"
       c.style.display = "block"
       m.style.display = "none"
       s.innerHTML = "Filme"
@@ -672,16 +673,11 @@ function createUsersSearch(usersData) {
       mainResults.style.display = "none"
       addCustomerWrapper.style.display = "none"
       if(s.innerHTML === "Filme"){
-        logoWrapper.setAttribute("onclick", 'showMovieSuggestions()')
+        logoWrapper.setAttribute("onclick", 'stateOne()')
       }
       suggest.style.display = "none"
       input.style.display = "none"
       mainpage.style.display = "none"
- /*     if(inputUsers.innerHTML === ""){
-        userInput.style.display = "none"
-        }  
-        else{
-          userInput.style.display = "flex"} */
       } 
 
       else {
@@ -705,7 +701,7 @@ function createUsersSearch(usersData) {
       else{
         input.style.display = "flex"}
     }
-   }
+   }  */
 
    function saveData(){
     outputArray = outputForm.filter(Number)               
@@ -726,3 +722,73 @@ function createUsersSearch(usersData) {
    function saveCustomerData(){
      console.log("saveCustomerData")
    }
+
+  // Start Results State
+
+ function stateOne(){
+     let mainpage = document.getElementById("mainpage")
+     mainpage.style.display = "flex"
+     let mainResults = document.getElementById("mainResults")
+     mainResults.style.display = "none"
+     let customerResults = document.getElementById("customerResults")
+     customerResults.style.display = "none"
+     let addCustomerWrapper = document.getElementById("addCustomerWrapper")
+     addCustomerWrapper.style.display = "none"
+     let body = document.body
+     body.style = "width: 100%; height: 100%; margin-top: 0px; background:linear-gradient(rgba(17, 16, 16, 0.5), rgba(0, 0, 0, 0.5)), url(https://duofischbach.ch/wp-content/uploads/2016/05/Movie-Theater-Wallpaper-2016.jpg); padding-top: 0px; padding-bottom: 0px; margin-left: 0; background-position: center center; background-attachment: fixed; background-size: cover; background-repeat: no-repeat; background-color: rgb(56, 54, 54);"
+   }
+
+  // Movie Results State 
+
+function stateTwo(){
+    let mainpage = document.getElementById("mainpage")
+    mainpage.style.display = "none"
+    let mainResults = document.getElementById("mainResults")
+    mainResults.style.display = "flex"
+    let customerResults = document.getElementById("customerResults")
+    customerResults.style.display = "none"
+    let addCustomerWrapper = document.getElementById("addCustomerWrapper")
+    addCustomerWrapper.style.display = "none"
+    let body = document.body
+    body.style = "width: 100%; height: 100%; margin-top: 0px; background:linear-gradient(rgba(17, 16, 16, 0.5), rgba(0, 0, 0, 0.5)), url(https://duofischbach.ch/wp-content/uploads/2016/05/Movie-Theater-Wallpaper-2016.jpg); padding-top: 0px; padding-bottom: 0px; margin-left: 0; background-position: center center; background-attachment: fixed; background-size: cover; background-repeat: no-repeat; background-color: rgb(56, 54, 54);"
+  }
+
+// New Customer State
+
+function stateThree(){
+    let mainpage = document.getElementById("mainpage")
+    mainpage.style.display = "none"
+    let mainResults = document.getElementById("mainResults")
+    mainResults.style.display = "none"
+    let customerResults = document.getElementById("customerResults")
+    customerResults.style.display = "none"
+    let addCustomerWrapper = document.getElementById("addCustomerWrapper")
+    addCustomerWrapper.style.display = "flex"
+    let body = document.body
+    body.style = "width: 100%; height: 100%; margin-top: 0px; background:linear-gradient(rgba(17, 16, 16, 0.5), rgba(0, 0, 0, 0.5)), url(https://media.timeout.com/images/105306356/image.jpg); padding-top: 0px; padding-bottom: 0px; margin-left: 0; background-position: center center; background-attachment: fixed; background-size: cover; background-repeat: no-repeat; background-color: rgb(56, 54, 54);"
+  }
+
+// Customer Results State
+
+function stateFour(){
+  let mainpage = document.getElementById("mainpage")
+  mainpage.style.display = "none"
+  let mainResults = document.getElementById("mainResults")
+  mainResults.style.display = "none"
+  let customerResults = document.getElementById("customerResults")
+  customerResults.style.display = "flex"
+  let addCustomerWrapper = document.getElementById("addCustomerWrapper")
+  addCustomerWrapper.style.display = "none"
+  let body = document.body
+  body.style = "width: 100%; height: 100%; margin-top: 0px; background:linear-gradient(rgba(17, 16, 16, 0.5), rgba(0, 0, 0, 0.5)), url(https://media.timeout.com/images/105306356/image.jpg); padding-top: 0px; padding-bottom: 0px; margin-left: 0; background-position: center center; background-attachment: fixed; background-size: cover; background-repeat: no-repeat; background-color: rgb(56, 54, 54);"
+}
+
+function changeStyle(){
+  let m = document.getElementById("navSearch")
+  let c = document.getElementById("customerSearch")
+  let s = document.getElementById("styleChange")
+
+  if(s.innerHTML == Kundensuche){
+    
+  }
+}
